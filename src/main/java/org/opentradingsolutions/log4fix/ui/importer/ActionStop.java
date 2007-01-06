@@ -52,7 +52,6 @@ public class ActionStop extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("ActionStop.actionPerformed");
         importer.stop();
     }
 }

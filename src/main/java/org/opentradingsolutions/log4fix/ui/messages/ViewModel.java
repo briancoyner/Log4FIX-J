@@ -74,8 +74,10 @@ public class ViewModel implements ListSelectionListener {
 
     private EventListModel<LogEvent> eventsListModel;
     private FieldTreeTableModel treeTableModel;
+    private MemoryLogModel memoryLogModel;
 
     public ViewModel(MemoryLogModel memoryLogModel) {
+        this.memoryLogModel = memoryLogModel;
 
         createRaw(memoryLogModel.getMessages());
 
@@ -123,8 +125,13 @@ public class ViewModel implements ListSelectionListener {
             if (list != null && list.size() > 0) {
 
                 for (ValidationError validationError : list) {
-                    Logger.global.info(validationError.getMessage());
+                    String message = validationError.getMessage();
+                    Logger.global.info(message);
+                    memoryLogModel.addLogEvent(new LogEvent(message));
                 }
+
+                // we are done with the messages
+                list.clear();
             }
 
             List<LogField> logFields = logMessage.getLogFields();

@@ -36,6 +36,7 @@ package org.opentradingsolutions.log4fix.ui.messages;
 
 import ca.odell.glazedlists.swing.EventTableModel;
 import org.opentradingsolutions.log4fix.core.LogMessage;
+import org.opentradingsolutions.log4fix.core.ValidationError;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -89,9 +90,19 @@ public class RawMessageTableCellRenderer extends DefaultTableCellRenderer {
             setForeground(Color.BLACK);
         }
 
-        // @todo - figure out a better way to show that a message failed QFJ validation.
         if (message.getValidationErrorMessages() != null) {
             setBorder(BorderFactory.createLineBorder(Color.RED));
+
+            String tooltip = "<html>Message Errors:";
+            java.util.List<ValidationError> errors = message.getValidationErrorMessages();
+            for (ValidationError error : errors) {
+                tooltip += "<div>" + error.getMessage() + "</div>";
+            }
+
+            tooltip += "</html>";
+            setToolTipText(tooltip);
+        } else {
+            setToolTipText(message.getRawMessage());
         }
 
         return comp;

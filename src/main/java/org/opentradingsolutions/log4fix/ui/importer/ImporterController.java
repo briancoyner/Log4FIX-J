@@ -45,12 +45,16 @@ import javax.swing.*;
  */
 public class ImporterController {
 
-    private Action start;
-    private Action stop;
+    private final Action start;
+    private final Action stop;
+    private final JLabel busyText;
 
     public ImporterController(Importer service, ImporterModel model) {
         start = new ActionStart(service, model, new DefaultImporterController());
         stop = new ActionStop(service);
+
+        busyText = new JLabel();
+        busyText.setVisible(false);
     }
 
     public Action getStart() {
@@ -61,20 +65,25 @@ public class ImporterController {
         return stop;
     }
 
+    public JComponent getBusyIcon() {
+        return busyText;
+    }
+
     private class DefaultImporterController implements ImporterCallback {
         public void starting() {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
 
-
+                    busyText.setText("Importing...");
+                    busyText.setVisible(true);
                     start.setEnabled(false);
                     stop.setEnabled(true);
                 }
             });
-
         }
 
         public void canceling() {
+            busyText.setText("Cancelling...");
         }
 
         public void done() {
@@ -82,8 +91,10 @@ public class ImporterController {
             SwingUtilities.invokeLater(new Runnable() {
 
                 public void run() {
+                    busyText.setVisible(false);
                     start.setEnabled(true);
                     stop.setEnabled(false);
+
                 }
             });
         }

@@ -214,7 +214,7 @@ public class LogMessage {
 
                     }
                 } catch (FieldNotFound fieldNotFound) {
-                    throw new RuntimeException(fieldNotFound);
+                    addValidationError(new ValidationError(fieldNotFound.getMessage()));
                 }
 
                 logField.addGroup(logGroup);
@@ -254,7 +254,7 @@ public class LogMessage {
         iterator = genericMessage.iterator();
         while (iterator.hasNext()) {
             Field field = (Field) iterator.next();
-               int tag = field.getTag();
+            int tag = field.getTag();
             if (!allFields.containsKey(tag)) {
                 allFields.put(tag, field);
             }

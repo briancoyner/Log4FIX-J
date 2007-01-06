@@ -89,7 +89,7 @@ public class ViewBuilder {
         memoryLogModel.addPropertyChangeListener(new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent evt) {
 
-                String title = null;
+                String title;
                 if (evt.getNewValue() == null) {
                     title = NO_SESSION_ID;
                 } else {

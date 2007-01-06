@@ -82,7 +82,7 @@ import java.util.Map;
  *
  * <p>
  * You can {@link #show()} the Log4FIX frame anytime. You do not have to wait
- * for the session to connect to the counterparty. 
+ * for the session to connect to the counterparty.
  *
  * @author Brian M. Coyner
  */
@@ -155,6 +155,8 @@ public class Log4FIX {
             }
         }
         ));
+
+        buttonPanel.add(controller.getBusyIcon());
 
         log4FIX.frame.add(buttonPanel, BorderLayout.NORTH);
         log4FIX.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
