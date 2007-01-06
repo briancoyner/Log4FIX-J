@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
