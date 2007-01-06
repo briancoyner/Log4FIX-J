@@ -1,0 +1,15 @@
+
+Tests that repeating groups does not cause failure and that Log4FIX handles
+messages with non-SOH delimeters.
+
+@@EXPECTED_RESULTS@@
+Direction=Incoming
+ExpectedMessageCount=1
+ExpectedBeginString=FIX.4.2
+ExpectedSenderCompId=CoyTrade
+ExpectedTargetCompId=BCExchange
+IsValid=true
+HasRepeatingGroups=true
+
+8=FIX.4.2|9=138|35=V|34=11|49=CoyTrade|52=20060612-20:02:28|56=BCExchange|128=ACME
+|146=1|55=ADSX|48=SECRET|22=1|262=1|263=1|264=0|265=0|267=2|269=0|269=1|10=187|
