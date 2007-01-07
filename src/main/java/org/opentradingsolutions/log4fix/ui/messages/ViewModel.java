@@ -121,24 +121,34 @@ public class ViewModel implements ListSelectionListener {
             RootNode rootNode = new RootNode();
 
             LogMessage logMessage = selectedMessage.get(0);
-            List<ValidationError> list = logMessage.getValidationErrorMessages();
-            if (list != null && list.size() > 0) {
-
-                for (ValidationError validationError : list) {
-                    String message = validationError.getMessage();
-                    Logger.global.info(message);
-                    memoryLogModel.addLogEvent(new LogEvent(message));
-                }
-
-                // we are done with the messages
-                list.clear();
-            }
 
             List<LogField> logFields = logMessage.getLogFields();
             for (LogField logField : logFields) {
                 FieldTreeNode fieldNode = new FieldTreeNode(logField);
                 rootNode.addFieldTreeNode(fieldNode);
             }
+
+            List<ValidationError> list = logMessage.getValidationErrorMessages();
+            if (list != null && list.size() > 0) {
+
+                // this string is for the "log" output... not a LogEvent.
+                String logMessageErrors = "Message Errors (" +
+                        logMessage.getMessageTypeName() + "):";
+                memoryLogModel.addLogEvent(new LogEvent(logMessageErrors));
+                for (ValidationError validationError : list) {
+                    String message = validationError.getMessage();
+
+                    memoryLogModel.addLogEvent(new LogEvent("    " + message));
+
+                    logMessageErrors += "\n    " + message;
+                }
+
+                Logger.global.info(logMessageErrors);
+
+                // we are done with the messages
+                list.clear();
+            }
+
 
             treeTableModel.setRoot(rootNode);
         } else {
