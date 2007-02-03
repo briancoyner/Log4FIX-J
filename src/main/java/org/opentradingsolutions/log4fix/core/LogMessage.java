@@ -56,7 +56,7 @@ import java.util.Map;
 /**
  * @author Brian M. Coyner
  */
-public class LogMessage {
+public class LogMessage implements Comparable {
 
     public static final char DEFAULT_DELIMETER = '|';
     public static final char SOH_DELIMETER = (char) 0x01;
@@ -74,9 +74,11 @@ public class LogMessage {
     private DataDictionary dictionary;
     private List<ValidationError> validationErrors;
     private boolean isValid;
+    private int messageIndex;
 
-    public LogMessage(boolean incoming, SessionID sessionId,
+    public LogMessage(int messageIndex, boolean incoming, SessionID sessionId,
             String rawMessage, DataDictionary dictionary) {
+        this.messageIndex = messageIndex;
 
         isValid = true;
         this.dictionary = dictionary;
@@ -183,6 +185,18 @@ public class LogMessage {
         }
 
         return logFields;
+    }
+
+    public int compareTo(Object o) {
+        LogMessage rhs = (LogMessage) o;
+        int rhsMessageIndex = rhs.messageIndex;
+        return (messageIndex < rhsMessageIndex ? -1 :
+                (messageIndex == rhsMessageIndex ? 0 : 1));
+    }
+
+
+    public String toString() {
+        return "" + messageIndex;
     }
 
     private LogField createLogField(Message message, Field field) {

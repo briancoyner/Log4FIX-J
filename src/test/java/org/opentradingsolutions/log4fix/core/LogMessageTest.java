@@ -37,19 +37,7 @@ package org.opentradingsolutions.log4fix.core;
 import org.opentradingsolutions.log4fix.util.FIXMessageTestHelper;
 import quickfix.FieldNotFound;
 import quickfix.Message;
-import quickfix.SessionID;
-import quickfix.field.ClOrdID;
-import quickfix.field.HandlInst;
-import quickfix.field.MsgSeqNum;
 import quickfix.field.MsgType;
-import quickfix.field.OrdType;
-import quickfix.field.SenderCompID;
-import quickfix.field.SendingTime;
-import quickfix.field.Side;
-import quickfix.field.Symbol;
-import quickfix.field.TargetCompID;
-import quickfix.field.TransactTime;
-import quickfix.fix42.NewOrderSingle;
 
 import java.util.Date;
 import java.util.List;
@@ -59,20 +47,19 @@ import java.util.List;
  */
 public class LogMessageTest extends AbstractSessionTestCase {
     private Date sendingTime;
-    private int messageSequenceNumber;
+    private FIXMessageTestHelper testHelper;
 
     @Override
     protected void doSetUp() throws Exception {
         sendingTime = new Date();
-        messageSequenceNumber = 1;
+        testHelper = new FIXMessageTestHelper(getSessionId());
     }
 
     public void testGetMessageTypeWhenTheMessageTypeIsMissing() {
-        Message message = createValidMessage(sendingTime);
+        Message message = testHelper.createValidMessage(sendingTime);
 
-        String invalidRawMessage = FIXMessageTestHelper.removeField(
-                MsgType.FIELD, message.toString());
-        LogMessage logMessage = new LogMessage(true, getSessionId(), invalidRawMessage,
+        String invalidRawMessage = testHelper.removeField(MsgType.FIELD, message.toString());
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(), invalidRawMessage,
                 getDictionary());
 
         assertNull(logMessage.getMessageTypeName());
@@ -81,8 +68,8 @@ public class LogMessageTest extends AbstractSessionTestCase {
     }
 
     public void testMessageWithoutSendingTimeIsAnInvalidMessage() {
-        Message message = createValidMessage(null);
-        LogMessage logMessage = new LogMessage(true, getSessionId(),
+        Message message = testHelper.createValidMessage(null);
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(),
                 message.toString(), getDictionary());
 
         assertNull(logMessage.getSendingTime());
@@ -95,8 +82,8 @@ public class LogMessageTest extends AbstractSessionTestCase {
 
     public void testValidMessage() throws FieldNotFound {
 
-        Message message = createValidMessage(sendingTime);
-        LogMessage logMessage = new LogMessage(true, getSessionId(),
+        Message message = testHelper.createValidMessage(sendingTime);
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(),
                 message.toString(), getDictionary());
         assertValidLogMessage(message, logMessage);
     }
@@ -125,35 +112,6 @@ public class LogMessageTest extends AbstractSessionTestCase {
             assertNull(logMessage.getValidationErrorMessages());
         } else {
             assertNotNull(logMessage.getValidationErrorMessages());
-        }
-    }
-
-    private Message createValidMessage(Date sendingTime) {
-        return createMessage(sendingTime, true);
-    }
-
-    private Message createMessage(Date sendingTime, boolean isValid) {
-        Message message = new NewOrderSingle(new ClOrdID("12345"),
-                new HandlInst(HandlInst.AUTOMATED_EXECUTION_ORDER_PRIVATE),
-                new Symbol("COYNER"), new Side(Side.BUY),
-                new TransactTime(new Date()), new OrdType(OrdType.MARKET));
-
-        setHeaderFields(message, sendingTime, isValid);
-        return message;
-    }
-
-    private void setHeaderFields(Message message, Date sendingTime, boolean isValid) {
-        SessionID sessionId = getSessionId();
-        message.getHeader().setString(SenderCompID.FIELD, sessionId.getSenderCompID());
-        message.getHeader().setString(TargetCompID.FIELD, sessionId.getTargetCompID());
-        message.getHeader().setInt(MsgSeqNum.FIELD, messageSequenceNumber);
-
-        if (sendingTime != null) {
-            if (isValid) {
-                message.getHeader().setUtcTimeStamp(SendingTime.FIELD, sendingTime, true);
-            } else {
-                message.setUtcTimeStamp(SendingTime.FIELD, sendingTime, true);
-            }
         }
     }
 }

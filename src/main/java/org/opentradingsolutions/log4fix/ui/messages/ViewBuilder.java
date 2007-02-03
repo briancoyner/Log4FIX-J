@@ -34,7 +34,11 @@
 
 package org.opentradingsolutions.log4fix.ui.messages;
 
+import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.FilterList;
+import ca.odell.glazedlists.matchers.CompositeMatcherEditor;
+import ca.odell.glazedlists.matchers.MatcherEditor;
 import ca.odell.glazedlists.swing.TextComponentMatcherEditor;
 import org.jdesktop.swingx.JXTreeTable;
 import org.jdesktop.swingx.decorator.HighlighterPipeline;
@@ -133,15 +137,35 @@ public class ViewBuilder {
 
         FilterList<LogMessage> messages = ((GlazedListsMemoryLogModel) memoryLogModel).
                 getMessages();
-        messages.setMatcherEditor(new TextComponentMatcherEditor<LogMessage>(filterField,
-                new MessageFilterator()));
+
+        EventList matchers = new BasicEventList();
+
+        TextComponentMatcherEditor<LogMessage> liveSearchMatcherEditor =
+                        new TextComponentMatcherEditor<LogMessage>(filterField,
+                                new MessageFilterator());
+        matchers.add(liveSearchMatcherEditor);
+        MatcherEditor matcherEditor = new CompositeMatcherEditor(matchers);
+        messages.setMatcherEditor(matcherEditor);
+
+        JPanel sortPanel = new JPanel();
+        ((FlowLayout) sortPanel.getLayout()).setAlignment(FlowLayout.LEFT);
+        JCheckBox sortCheckbox = new JCheckBox("Keep New Messages At The Top");
+        sortPanel.add(sortCheckbox);
+        sortCheckbox.addActionListener(viewModel.getSortByMessageIndexActionListener());
+
+        JCheckBox hideHeartbeats = new JCheckBox("Hide Heartbeats");
+        sortPanel.add(hideHeartbeats);
+        hideHeartbeats.addActionListener(viewModel.getHideHeartbeatsActionListener());
 
         JPanel filterPanel = new JPanel();
         ((FlowLayout) filterPanel.getLayout()).setAlignment(FlowLayout.RIGHT);
         filterPanel.add(new JLabel("Search:"));
         filterPanel.add(filterField);
 
-        mainView.add(filterPanel, BorderLayout.NORTH);
+        JPanel northPanel = new JPanel(new BorderLayout());
+        northPanel.add(sortPanel, BorderLayout.WEST);
+        northPanel.add(filterPanel, BorderLayout.EAST);
+        mainView.add(northPanel, BorderLayout.NORTH);
 
         return mainView;
     }
@@ -162,6 +186,7 @@ public class ViewBuilder {
         }
 
         table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        
         return table;
     }
 

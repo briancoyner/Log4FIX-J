@@ -31,6 +31,7 @@
       <entry name="?*.html" />
       <entry name="?*.dtd" />
       <entry name="?*.tld" />
+      <entry name="?*.log" />
     </wildcardResourcePatterns>
   </component>
   <component name="DataSourceManagerImpl" />
@@ -486,7 +487,9 @@
         <root url="jar://$PROJECT_DIR$/lib/swingx.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="file:///Users/briancoyner/Desktop/glazedlists-1/source" />
+      </SOURCES>
     </library>
   </component>
   <component name="uidesigner-configuration">

@@ -29,8 +29,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelSortTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.ipr" afterPath="$PROJECT_DIR$/Log4FIX.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLog.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelHideHeartbeatMessagesTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/search" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/HeartbeatFilterator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLogModel.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLogModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iml" afterPath="$PROJECT_DIR$/Log4FIX.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iws" afterPath="$PROJECT_DIR$/Log4FIX.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/util/FIXMessageTestHelper.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/util/FIXMessageTestHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" />
     </list>
   </component>
   <component name="ChangeListSynchronizer" />
@@ -42,11 +56,11 @@
     <splitter proportion="0.5" />
   </component>
   <component name="CompilerWorkspaceConfiguration">
-    <option name="COMPILE_IN_BACKGROUND" value="false" />
+    <option name="COMPILE_IN_BACKGROUND" value="true" />
     <option name="AUTO_SHOW_ERRORS_IN_EDITOR" value="true" />
     <option name="CLOSE_MESSAGE_VIEW_IF_SUCCESS" value="true" />
     <option name="COMPILE_DEPENDENT_FILES" value="false" />
-    <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
+    <option name="CLEAR_OUTPUT_DIRECTORY" value="true" />
     <option name="ASSERT_NOT_NULL" value="true" />
   </component>
   <component name="CoverageDataManager" />
@@ -101,21 +115,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageBuilder.java" line="72" class="org.opentradingsolutions.log4fix.importer.LogMessageBuilder" package="org.opentradingsolutions.log4fix.importer">
-        <option name="ENABLED" value="true" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -169,35 +168,7 @@
     </subPane>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ViewModel.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="57" selection-start="775" selection-end="775" vertical-scroll-proportion="0.30222222">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogMessage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="26" selection-start="6135" selection-end="6135" vertical-scroll-proportion="0.33333334">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventSelectionModel.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/glazedlists-1.6.0.jar!/ca/odell/glazedlists/swing/EventSelectionModel.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="45" selection-start="868" selection-end="868" vertical-scroll-proportion="0.33333334">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -327,8 +298,30 @@
           <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
+      </PATH>
+      <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/test" />
+          <option name="myItemId" value="Log4FIX.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Log4FIX" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/resources" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -350,15 +343,15 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/test" />
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/test/java" />
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix" />
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -377,6 +370,60 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Log4FIX.ipr" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Log4FIX" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -400,6 +447,7 @@
     </navigator>
   </component>
   <component name="PropertiesComponent">
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
@@ -412,7 +460,11 @@
   <component name="ReadonlyStatusHandler">
     <option name="SHOW_DIALOG" value="true" />
   </component>
-  <component name="RecentsManager" />
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.opentradingsolutions.log4fix.ui.messages" />
+    </key>
+  </component>
   <component name="Regex">
     <option name="pos1" value="218" />
     <option name="pos2" value="218" />
@@ -426,6 +478,47 @@
   </component>
   <component name="RestoreUpdateTree" />
   <component name="RunManager" selected="JUnit.Run All Tests">
+    <tempConfiguration default="false" name="ViewModelHideHeartbeatMessagesTest" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+      <pattern value="org.opentradingsolutions.log4fix.ui.messages.*" />
+      <module name="Log4FIX" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.opentradingsolutions.log4fix.ui.messages" />
+      <option name="MAIN_CLASS_NAME" value="org.opentradingsolutions.log4fix.ui.messages.ViewModelHideHeartbeatMessagesTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </tempConfiguration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="/Applications/IDEA 6.0.app/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
@@ -458,25 +551,6 @@
         <option name="Make" value="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="/Applications/IDEA 6.0.app/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
     <configuration default="false" name="Main" type="Application" factoryName="Application" enabled="false" merge="false">
       <option name="MAIN_CLASS_NAME" value="org.opentradingsolutions.log4fix.importer.Main" />
       <option name="VM_PARAMETERS" value="" />
@@ -486,7 +560,13 @@
       <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <module name="Log4FIX" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="53155" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="Make" value="true" />
@@ -582,7 +662,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="76" y="22" width="1163" height="822" extended-state="0" />
+    <frame x="66" y="22" width="1094" height="809" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
@@ -590,20 +670,20 @@
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24955116" order="0" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32965517" order="1" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3014354" order="0" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48735955" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32827586" order="8" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3244382" order="8" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="6" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45931035" order="2" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45786518" order="2" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31494057" order="2" />
       <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40965518" order="4" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40730336" order="4" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
@@ -689,115 +769,115 @@
   <component name="com.intellij.ide.util.scopeChooser.ScopeChooserConfigurable" proportions="" version="1">
     <option name="myLastEditedConfigurable" />
   </component>
-  <component name="com.intellij.openapi.roots.ui.configuration.projectRoot.ProjectRootMasterDetailsConfigurable" proportions="0.11111111,0.5" version="1">
+  <component name="com.intellij.openapi.roots.ui.configuration.projectRoot.ProjectRootMasterDetailsConfigurable" proportions="0.11111111" version="1">
     <option name="myPlainMode" value="false" />
     <option name="myLastEditedConfigurable" value="Log4FIX" />
   </component>
-  <component name="com.intellij.profile.ui.ErrorOptionsConfigurable" proportions="" version="1">
-    <option name="myLastEditedConfigurable" />
+  <component name="com.intellij.profile.ui.ErrorOptionsConfigurable" proportions="0.11111111,0.60142857" version="1">
+    <option name="myLastEditedConfigurable" value="Default" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelSortTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="27" selection-start="3696" selection-end="3696" vertical-scroll-proportion="0.60444444">
+        <state line="65" column="80" selection-start="2687" selection-end="2687" vertical-scroll-proportion="0.018126888">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/util/FIXMessageTestHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="0" selection-start="5731" selection-end="5731" vertical-scroll-proportion="0.5733333">
+        <state line="113" column="25" selection-start="4312" selection-end="4312" vertical-scroll-proportion="0.8549849">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java">
+    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/matchers/Matcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="0" selection-start="4816" selection-end="4816" vertical-scroll-proportion="0.017777778">
+        <state line="22" column="17" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.36253777">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ActionStop.java">
+    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/TextFilterable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="8" selection-start="2101" selection-end="2101" vertical-scroll-proportion="0.680597">
+        <state line="14" column="17" selection-start="556" selection-end="556" vertical-scroll-proportion="0.21752267">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/ImporterFileTest.java">
+    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/filter/StartsWithCaseInsensitiveTextSearchStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="8" selection-start="3937" selection-end="3937" vertical-scroll-proportion="0.446875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="361" selection-end="361" vertical-scroll-proportion="0.16">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="1549" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="0" selection-start="7888" selection-end="7888" vertical-scroll-proportion="0.96444446">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/RawMessageTableCellRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="4238" selection-end="4238" vertical-scroll-proportion="0.96444446">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/Log4FIX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="0" selection-start="7078" selection-end="7078" vertical-scroll-proportion="0.96444446">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ImporterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="0" selection-start="3380" selection-end="3380" vertical-scroll-proportion="0.96444446">
+        <state line="110" column="0" selection-start="4530" selection-end="4530" vertical-scroll-proportion="0.7774343">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="16" selection-start="2084" selection-end="2084" vertical-scroll-proportion="0.48">
+        <state line="38" column="47" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.68882173">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/glazedlists-1.6.0.jar!/ca/odell/glazedlists/swing/EventSelectionModel.class">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelHideHeartbeatMessagesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="45" selection-start="868" selection-end="868" vertical-scroll-proportion="0.33333334">
+        <state line="101" column="44" selection-start="4187" selection-end="4187" vertical-scroll-proportion="0.4018127">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java">
+    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/filter/TextMatcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="26" selection-start="6135" selection-end="6135" vertical-scroll-proportion="0.33333334">
+        <state line="103" column="0" selection-start="3934" selection-end="3934" vertical-scroll-proportion="0.17928903">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/FilterList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="0" selection-start="5047" selection-end="5047" vertical-scroll-proportion="0.17928903">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/matchers/NotMatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="0.38066465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/filter/BoyerMooreCaseInsensitiveTextSearchStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="0" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.6846986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/MessageFilterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="0" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.21752267">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="42" selection-start="6515" selection-end="6515" vertical-scroll-proportion="0.018126888">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/HeartbeatFilterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="22" selection-start="1938" selection-end="1938" vertical-scroll-proportion="0.1450151">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="57" selection-start="775" selection-end="775" vertical-scroll-proportion="0.30222222">
+        <state line="223" column="10" selection-start="8659" selection-end="8659" vertical-scroll-proportion="2.90881">
           <folding />
         </state>
       </provider>

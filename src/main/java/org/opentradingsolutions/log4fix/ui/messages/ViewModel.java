@@ -36,8 +36,15 @@ package org.opentradingsolutions.log4fix.ui.messages;
 
 import ca.odell.glazedlists.BasicEventList;
 import ca.odell.glazedlists.EventList;
+import ca.odell.glazedlists.FilterList;
+import ca.odell.glazedlists.GlazedLists;
+import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.impl.beans.BeanTableFormat;
+import ca.odell.glazedlists.impl.filter.TextMatcher;
+import ca.odell.glazedlists.impl.matchers.NotMatcher;
+import ca.odell.glazedlists.matchers.Matcher;
+import ca.odell.glazedlists.matchers.TextMatcherEditor;
 import ca.odell.glazedlists.swing.EventListModel;
 import ca.odell.glazedlists.swing.EventSelectionModel;
 import ca.odell.glazedlists.swing.EventTableModel;
@@ -51,10 +58,13 @@ import org.opentradingsolutions.log4fix.ui.fields.FieldTreeNode;
 import org.opentradingsolutions.log4fix.ui.fields.FieldTreeTableModel;
 import org.opentradingsolutions.log4fix.ui.fields.RootNode;
 
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -75,11 +85,17 @@ public class ViewModel implements ListSelectionListener {
     private EventListModel<LogEvent> eventsListModel;
     private FieldTreeTableModel treeTableModel;
     private MemoryLogModel memoryLogModel;
+    private SortedList<LogMessage> sortedList;
+    private FilterList<LogMessage> filteredList;
 
     public ViewModel(MemoryLogModel memoryLogModel) {
         this.memoryLogModel = memoryLogModel;
 
-        createRaw(memoryLogModel.getMessages());
+        EventList<LogMessage> originalList = (EventList<LogMessage>)
+                memoryLogModel.getMessages();
+        filteredList = new FilterList<LogMessage>(originalList);
+        sortedList = new SortedList<LogMessage>(filteredList);
+        createRaw(sortedList);
 
         crackedFields = new BasicEventList<LogField>();
         treeTableModel = new FieldTreeTableModel();
@@ -89,6 +105,14 @@ public class ViewModel implements ListSelectionListener {
 
     public EventListModel<LogEvent> getEventsListModel() {
         return eventsListModel;
+    }
+
+    SortedList<LogMessage> getSortedList() {
+        return sortedList;
+    }
+
+    FilterList getFilteredList() {
+        return filteredList;
     }
 
     public EventSelectionModel<LogMessage> getRawMessagesSelectionModel() {
@@ -156,7 +180,7 @@ public class ViewModel implements ListSelectionListener {
         }
     }
 
-    private void createRaw(List<LogMessage> adminMessages) {
+    private void createRaw(EventList<LogMessage> adminMessages) {
         String[] properties = {LogMessage.INCOMING, LogMessage.MESSAGE_TYPE_NAME,
                 LogMessage.SENDING_TIME, LogMessage.RAW_MESSAGE};
         String[] columnNames = {"Direction", "Message Type", "Sending Time",
@@ -165,15 +189,46 @@ public class ViewModel implements ListSelectionListener {
         TableFormat<LogMessage> adminTableFormat = new BeanTableFormat<LogMessage>(
                 LogMessage.class, properties, columnNames);
 
-        rawMessagesTableModel = new EventTableModel<LogMessage>(
-                (EventList<LogMessage>) adminMessages, adminTableFormat);
-        rawMessagesSelectionModel = new EventSelectionModel<LogMessage>(
-                (EventList<LogMessage>) adminMessages);
+        rawMessagesTableModel = new EventTableModel<LogMessage>(adminMessages,
+                adminTableFormat);
+        rawMessagesSelectionModel = new EventSelectionModel<LogMessage>(adminMessages);
         rawMessagesSelectionModel.addListSelectionListener(this);
         rawMessagesTableCellRenderer = new RawMessageTableCellRenderer();
     }
 
     private void createEvents(List<LogEvent> events) {
         eventsListModel = new EventListModel<LogEvent>((EventList<LogEvent>) events);
+    }
+
+    public ActionListener getSortByMessageIndexActionListener() {
+        return new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                JCheckBox checkbox = (JCheckBox) e.getSource();
+                if (checkbox.isSelected()) {
+                    sortedList.setComparator(GlazedLists.reverseComparator());
+                } else {
+                    sortedList.setComparator(null);
+                }
+            }
+        };
+    }
+
+    public ActionListener getHideHeartbeatsActionListener() {
+        return new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JCheckBox checkBox = (JCheckBox) e.getSource();
+                if (checkBox.isSelected()) {
+
+                    String[] filters = {"Heartbeat"};
+                    TextMatcher<LogMessage> textMatcher = new TextMatcher<LogMessage>(
+                            filters, new HeartbeatFilterator(), TextMatcherEditor.CONTAINS);
+                    Matcher<LogMessage> matcher = new NotMatcher<LogMessage>(textMatcher);
+                    filteredList.setMatcher(matcher);
+                } else {
+                    filteredList.setMatcher(null);
+                }
+            }
+        };
     }
 }

@@ -35,6 +35,7 @@
 package org.opentradingsolutions.log4fix.core;
 
 import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.impl.ThreadSafeList;
 import quickfix.SessionID;
 
 import java.beans.PropertyChangeListener;
@@ -55,7 +56,7 @@ public class MockMemoryLogModel implements MemoryLogModel {
 
     public MockMemoryLogModel(SessionID sessionId) {
         this.sessionId = sessionId;
-        actualLogMessages = new BasicEventList<LogMessage>();
+        actualLogMessages = new ThreadSafeList<LogMessage>(new BasicEventList<LogMessage>());
         actualLogEvents = new BasicEventList<LogEvent>();
     }
 

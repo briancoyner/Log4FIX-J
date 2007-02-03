@@ -34,17 +34,74 @@
 
 package org.opentradingsolutions.log4fix.util;
 
+import quickfix.Message;
+import quickfix.SessionID;
+import quickfix.field.ClOrdID;
+import quickfix.field.HandlInst;
+import quickfix.field.Symbol;
+import quickfix.field.Side;
+import quickfix.field.TransactTime;
+import quickfix.field.OrdType;
+import quickfix.field.SenderCompID;
+import quickfix.field.TargetCompID;
+import quickfix.field.MsgSeqNum;
+import quickfix.field.SendingTime;
+import quickfix.fix42.NewOrderSingle;
+import quickfix.fix42.Heartbeat;
+
+import java.util.Date;
+
+import com.sun.net.ssl.internal.ssl.SSLEngineImpl;
+
 /**
  * @author Brian M. Coyner
  */
 public class FIXMessageTestHelper {
 
+    private int messageSequenceNumber = 1;
+    private SessionID sessionId;
 
-    public static String removeField(int tag, String rawMessage) {
+    public FIXMessageTestHelper(SessionID sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public Message createValidMessage() {
+        return createMessage(new Date(), true);
+    }
+
+    public Message createValidMessage(Date sendingTime) {
+        return createMessage(sendingTime, true);
+    }
+
+    public Message createMessage(Date sendingTime, boolean isValid) {
+        Message message = new NewOrderSingle(new ClOrdID("12345"),
+                new HandlInst(HandlInst.AUTOMATED_EXECUTION_ORDER_PRIVATE),
+                new Symbol("COYNER"), new Side(Side.BUY),
+                new TransactTime(new Date()), new OrdType(OrdType.MARKET));
+
+        setHeaderFields(message, sendingTime, isValid);
+        return message;
+    }
+
+    public void setHeaderFields(Message message, Date sendingTime, boolean isValid) {
+        message.getHeader().setString(SenderCompID.FIELD, sessionId.getSenderCompID());
+        message.getHeader().setString(TargetCompID.FIELD, sessionId.getTargetCompID());
+        message.getHeader().setInt(MsgSeqNum.FIELD, messageSequenceNumber++);
+
+        if (sendingTime != null) {
+            if (isValid) {
+                message.getHeader().setUtcTimeStamp(SendingTime.FIELD, sendingTime, true);
+            } else {
+                message.setUtcTimeStamp(SendingTime.FIELD, sendingTime, true);
+            }
+        }
+    }
+
+    public String removeField(int tag, String rawMessage) {
         return removeField(tag, rawMessage, (char) 0x01);
     }
 
-    public static String removeField(int tag, String rawMessage, char delimeter) {
+    public String removeField(int tag, String rawMessage, char delimeter) {
         int messageTypeIndex = rawMessage.indexOf(String.valueOf(tag));
         String msg = rawMessage.substring(0, messageTypeIndex);
         int nextFieldIndex = rawMessage.indexOf(delimeter, messageTypeIndex);
@@ -53,4 +110,7 @@ public class FIXMessageTestHelper {
     }
 
 
+    public Message createHeartbeatMessage() {
+        return new Heartbeat();
+    }
 }

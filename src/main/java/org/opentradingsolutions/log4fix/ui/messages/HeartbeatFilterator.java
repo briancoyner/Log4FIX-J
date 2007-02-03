@@ -32,54 +32,22 @@
  * SUCH DAMAGE.
  */
 
-package org.opentradingsolutions.log4fix.core;
+package org.opentradingsolutions.log4fix.ui.messages;
 
-import org.opentradingsolutions.log4fix.datadictionary.DataDictionaryLoader;
-import quickfix.Log;
-import quickfix.SessionID;
+import org.opentradingsolutions.log4fix.core.LogMessage;
+import ca.odell.glazedlists.TextFilterator;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
 
 /**
- * QuickFIX/J {@link Log} implementation that maintains all QuickFIX messages
- * in memory.
+ * Allows the user to remove heartbeat messages based on the QuickFIX/J message type
+ * name ('Heartbeat').
  *
  * @author Brian M. Coyner
  */
-public abstract class AbstractMemoryLog implements Log {
+public class HeartbeatFilterator implements TextFilterator<LogMessage> {
 
-    private DataDictionaryLoader dictionaryLoader;
-    private AtomicInteger index;
-
-    public AbstractMemoryLog(DataDictionaryLoader dictionaryLoader) {
-        this.dictionaryLoader = dictionaryLoader;
-        index = new AtomicInteger();
-    }
-
-    public void clear() {
-        getMemoryLogModel().clear();
-    }
-
-    public void onIncoming(String message) {
-        log(message, true);
-    }
-
-    public void onOutgoing(String message) {
-        log(message, false);
-    }
-
-    public void onEvent(String text) {
-        getMemoryLogModel().addLogEvent(new LogEvent(text));
-    }
-
-    protected abstract SessionID getSessionId();
-
-    protected abstract MemoryLogModel getMemoryLogModel();
-
-    private void log(final String rawMessage, final boolean incoming) {
-        SessionID sessionId = getSessionId();
-        int messageIndex = index.getAndIncrement();
-        getMemoryLogModel().addLogMessage(new LogMessage(messageIndex, incoming,
-                sessionId, rawMessage, dictionaryLoader.loadDictionary(sessionId)));
+    public void getFilterStrings(List<String> baseList, LogMessage message) {
+        baseList.add(message.getMessageTypeName());
     }
 }

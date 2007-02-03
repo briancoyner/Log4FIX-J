@@ -74,19 +74,20 @@ import java.util.List;
 public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
     private Date sendingTime;
     private int messageSequenceNumber;
+    private FIXMessageTestHelper testHelper;
 
     @Override
     protected void doSetUp() throws Exception {
         sendingTime = new Date();
         messageSequenceNumber = 1;
+        testHelper = new FIXMessageTestHelper(getSessionId());
     }
 
     public void testInvalidMessage() {
         Message message = createValidMessage(sendingTime);
 
-        String invalidRawMessage = FIXMessageTestHelper.removeField(
-                Symbol.FIELD, message.toString());
-        LogMessage logMessage = new LogMessage(true, getSessionId(), invalidRawMessage,
+        String invalidRawMessage = testHelper.removeField(Symbol.FIELD, message.toString());
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(), invalidRawMessage,
                 getDictionary());
 
         assertTrue("The message should still be valid because we have not " +
