@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<!--
+  ~ The Log4FIX Software License
+  ~ Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions
+  ~ are met:
+  ~
+  ~ 1. Redistributions of source code must retain the above copyright
+  ~    notice, this list of conditions and the following disclaimer.
+  ~
+  ~ 2. Redistributions in binary form must reproduce the above copyright
+  ~    notice, this list of conditions and the following disclaimer in
+  ~    the documentation and/or other materials provided with the
+  ~    distribution.
+  ~
+  ~ 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+  ~    nor the names of its contributors may be used to endorse or promote
+  ~    products derived from this software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
+  ~ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+  ~ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  ~ DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+  ~ ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  ~ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  ~ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+  ~ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  ~ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  ~ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+  ~ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+  ~ SUCH DAMAGE.
+  -->
+
+<project name="log4fix" basedir="." default="junit">
+
+    <!-- Generated files properties -->
+    <property name="project.version" value="1.5"/>
+    <property name="artifact.name" value="${ant.project.name}-${project.version}"/>
+    <property name="file.jar" value="${artifact.name}.jar"/>
+    <property name="file.src.zip" value="${artifact.name}-src.zip"/>
+    <property name="file.src.tar.gz" value="${artifact.name}-src.tar.gz"/>
+    <property name="file.bin.zip" value="${artifact.name}-bin.zip"/>
+    <property name="file.bin.tar.gz" value="${artifact.name}-bin.tar.gz"/>
+
+    <!-- Output directories -->
+    <property name="dir.build" value="build"/>
+    <property name="dir.build.classes" value="${dir.build}/classes"/>
+    <property name="dir.build.tests" value="${dir.build}/tests"/>
+
+    <!-- properties for the main source tree -->
+    <property name="dir.src.main.java" value="src/main/java"/>
+    <property name="dir.src.main.resources" value="src/main/resources"/>
+
+    <!-- properties for the test source tree -->
+    <property name="dir.src.tests.java" value="src/test/java"/>
+    <property name="dir.src.tests.resources" value="src/test/resources"/>
+
+    <property name="dir.lib" value="lib"/>
+    <property name="dir.build.dist" value="${dir.build}/dist"/>
+    <property name="dir.build.stage" value="${dir.build}/stage"/>
+    <property name="dir.build.stage.src" value="${dir.build.stage}/src"/>
+    <property name="dir.build.stage.bin" value="${dir.build.stage}/bin"/>
+
+    <!-- Classpath required to build Log4FIX -->
+    <path id="classpath.compile.main">
+        <pathelement location="${dir.lib}/glazedlists-1.6.0.jar"/>
+        <pathelement location="${dir.lib}/quickfixj-1.0.jar"/>
+        <pathelement location="${dir.lib}/swingx.jar"/>
+    </path>
+
+    <!-- Classpath required to build the tests -->
+    <path id="classpath.compile.tests">
+        <path refid="classpath.compile.main"/>
+        <pathelement location="${dir.build.classes}"/>
+        <pathelement location="${dir.lib}/junit-3.8.1.jar"/>
+    </path>
+
+    <!-- Classpath required to execute the tests -->
+    <path id="classpath.junit">
+        <pathelement location="${dir.build}/${file.jar}"/>
+        <pathelement location="${dir.build.tests}"/>
+        <path refid="classpath.compile.main"/>
+        <pathelement location="${dir.src.tests.resources}"/>
+    </path>
+
+    <target name="prepare">
+        <mkdir dir="${dir.build}"/>
+        <mkdir dir="${dir.build.classes}"/>
+        <mkdir dir="${dir.build.tests}"/>
+    </target>
+
+    <target name="clean" description="Deletes the 'build' directory.">
+        <delete dir="${dir.build}"/>
+    </target>
+
+    <target name="compile.main" depends="prepare">
+        <javac srcdir="${dir.src.main.java}"
+               destdir="${dir.build.classes}" debug="on" >
+            <classpath refid="classpath.compile.main"/>
+        </javac>
+    </target>
+
+
+    <target name="compile.tests" depends="compile.main"
+        description="Compiles the test code.">
+        <javac srcdir="${dir.src.tests.java}"
+            destdir="${dir.build.tests}" debug="on" >
+            <classpath refid="classpath.compile.tests"/>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile.tests">
+        <jar
+            basedir="${dir.build.classes}"
+            destfile="${dir.build}/${file.jar}"
+            manifest="${dir.src.main.resources}/manifest.mf"/>
+    </target>
+
+    <target name="junit" depends="jar">
+
+        <junit
+            showoutput="yes"
+            printsummary="yes"
+            haltonfailure="no"
+            haltonerror="no">
+
+            <classpath refid="classpath.junit"/>
+
+            <formatter type="xml"/>
+            <batchtest fork="yes" todir="${dir.build.tests}">
+                <fileset dir="${dir.src.tests.java}">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="junit.report" depends="junit">
+        <junitreport todir="${dir.build.tests}">
+            <fileset dir="${dir.build.tests}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${dir.build.tests}"/>
+        </junitreport>
+
+        <exec executable="open" os="Mac OS X">
+            <arg value="${dir.build.tests}/index.html"/>
+        </exec>
+    </target>
+
+
+    <!-- ******************** -->
+    <!-- Distribution Targets -->
+    <!-- ******************** -->
+
+    <target name="prepare.distribution"
+            depends="prepare.source.distribution,prepare.binary.distribution"/>
+
+    <target name="prepare.source.distribution">
+
+        <mkdir dir="${dir.build.stage.src}"/>
+
+        <copy todir="${dir.build.stage.src}">
+            <fileset dir=".">
+                <include name="src/**"/>
+                <include name="lib/*.jar"/>
+                <include name="lib/*license"/>
+                <include name="LICENSE"/>
+                <include name="build.xml"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="prepare.binary.distribution">
+
+        <mkdir dir="${dir.build.stage.bin}"/>
+        <mkdir dir="${dir.build.dist}"/>
+
+        <copy todir="${dir.build.stage.bin}">
+            <fileset dir="${dir.build}">
+                <include name="${file.jar}"/>
+            </fileset>
+            <fileset dir=".">
+                <include name="${dir.lib}/glazedlists-1.6.0.jar"/>
+                <include name="${dir.lib}/quickfixj-1.0.jar"/>
+                <include name="${dir.lib}/swingx.jar"/>
+                <include name="lib/*license"/>
+                <include name="LICENSE"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="source" depends="prepare.distribution">
+
+        <mkdir dir="${dir.build.dist}"/>
+
+        <zip destfile="${dir.build.dist}/${file.src.zip}">
+            <zipfileset dir="${dir.build.stage.src}" prefix="${artifact.name}"/>
+        </zip>
+
+        <tar destfile="${dir.build.dist}/${file.src.tar.gz}" longfile="gnu"
+		     compression="gzip">
+            <tarfileset dir="${dir.build.stage.src}" prefix="${artifact.name}"/>
+        </tar>
+    </target>
+
+    <target name="binary" depends="prepare.distribution">
+
+        <mkdir dir="${dir.build.dist}"/>
+
+        <zip destfile="${dir.build.dist}/${file.bin.zip}">
+            <zipfileset dir="${dir.build.stage.bin}" prefix="${artifact.name}"/>
+        </zip>
+
+        <tar destfile="${dir.build.dist}/${file.bin.tar.gz}" longfile="gnu"
+		     compression="gzip">
+            <tarfileset dir="${dir.build.stage.bin}" prefix="${artifact.name}"/>
+        </tar>
+    </target>
+
+
+    <!-- Execute a clean build and generate the distributable artifacts -->
+    <target name="dist" depends="clean,junit,source,binary"/>
+
+</project>
