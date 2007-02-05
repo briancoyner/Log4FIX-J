@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: lib/glazedlists-1.6.0.jar lib/quickfixj-1.0.jar lib/swingx.jar
-Main-Class: org.opentradingsolutions.log4fix.importer.Main

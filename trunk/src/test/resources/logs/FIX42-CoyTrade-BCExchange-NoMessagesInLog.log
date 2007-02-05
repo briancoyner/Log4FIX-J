@@ -1,9 +1,0 @@
-This is a log file with no FIX messages. The importer should not blow up.
-
-@@EXPECTED_RESULTS@@
-ExpectedMessageCount=0
-Direction=
-ExpectedBeginString=
-ExpectedSenderCompId=
-ExpectedTargetCompId=
-IsValid=
