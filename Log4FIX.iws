@@ -29,22 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelSortTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.ipr" afterPath="$PROJECT_DIR$/Log4FIX.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLog.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelHideHeartbeatMessagesTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/search" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/HeartbeatFilterator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLogModel.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLogModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iml" afterPath="$PROJECT_DIR$/Log4FIX.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iws" afterPath="$PROJECT_DIR$/Log4FIX.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/util/FIXMessageTestHelper.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/util/FIXMessageTestHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" />
     </list>
   </component>
   <component name="ChangeListSynchronizer" />
@@ -281,152 +266,6 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/resources" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX.ipr" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Log4FIX" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PsiDirectory:$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
     </subPane>
   </component>
   <component name="ProjectReloadState">
@@ -500,6 +339,19 @@
         <option name="Make" value="true" />
       </method>
     </tempConfiguration>
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <module name="" />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -518,19 +370,6 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <module name="" />
-      <method>
-        <option name="Make" value="true" />
-      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
       <module name="" />
@@ -663,14 +502,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="66" y="22" width="1094" height="809" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3014354" order="0" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3014354" order="0" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48735955" order="1" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3244382" order="8" />
@@ -708,7 +547,7 @@
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="false" />
     <option name="PUT_FOCUS_INTO_COMMENT" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the copyright on all source files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the capability to reverse the message order and remove heartbeat messages." />
     <option name="SAVE_LAST_COMMIT_MESSAGE" value="true" />
     <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -723,6 +562,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Fixed a few bugs." />
     <MESSAGE value="Updated the copyright on all source files." />
+    <MESSAGE value="Added the capability to reverse the message order and remove heartbeat messages." />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -791,27 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/matchers/Matcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="17" selection-start="1015" selection-end="1015" vertical-scroll-proportion="0.36253777">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/TextFilterable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="17" selection-start="556" selection-end="556" vertical-scroll-proportion="0.21752267">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/filter/StartsWithCaseInsensitiveTextSearchStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="4530" selection-end="4530" vertical-scroll-proportion="0.7774343">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="47" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.68882173">
@@ -822,34 +641,6 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelHideHeartbeatMessagesTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="44" selection-start="4187" selection-end="4187" vertical-scroll-proportion="0.4018127">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/filter/TextMatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="0" selection-start="3934" selection-end="3934" vertical-scroll-proportion="0.17928903">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/FilterList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="0" selection-start="5047" selection-end="5047" vertical-scroll-proportion="0.17928903">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/matchers/NotMatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="851" selection-end="851" vertical-scroll-proportion="0.38066465">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Users/briancoyner/Desktop/glazedlists-1/source/ca/odell/glazedlists/impl/filter/BoyerMooreCaseInsensitiveTextSearchStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.6846986">
           <folding />
         </state>
       </provider>
