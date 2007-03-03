@@ -124,8 +124,20 @@ public class LogMessageBuilder implements Runnable {
                 messageCount++;
             }
         } catch (InterruptedException e) {
-            logger.onEvent(e.getMessage());
-            throw new RuntimeException(e);
+            logger.onEvent("**** ERROR ****");
+            logger.onEvent("The message builder thread was interrupted due to the " +
+                    "following error:");
+            logger.onEvent(" - " + e.getMessage());
+
+            // print some extra information about the failure if multiple sessions
+            // were found in the log file.
+            if (e instanceof MultipleSessionsException) {
+                MultipleSessionsException mse = (MultipleSessionsException) e;
+                logger.onEvent(" - First Session Id: " + mse.getFirstSessionId());
+                logger.onEvent(" - Second Session Id: " + mse.getSecondSessionId());
+            }
+
+            logger.onEvent("****  END  ****");
         } finally {
             logger.onEvent(EVENT_MESSAGES_IMPORTED + ": " + messageCount);
             logger.onEvent(EVENT_COMPLETE + ": " + new Date());
@@ -133,7 +145,7 @@ public class LogMessageBuilder implements Runnable {
     }
 
     private boolean isIncomingMessage(SessionID currentSessionId,
-            SessionID senderSessionId) {
+            SessionID senderSessionId) throws InterruptedException{
 
         boolean incoming;
         if (senderSessionId.getSenderCompID().equals(currentSessionId.getSenderCompID())
@@ -144,8 +156,7 @@ public class LogMessageBuilder implements Runnable {
                 && senderSessionId.getTargetCompID().equals(currentSessionId.getSenderCompID())) {
             incoming = true;
         } else {
-            throw new RuntimeException("There is other session data " +
-                    "mixed in. Log4FIX does not handle this.");
+            throw new MultipleSessionsException(senderSessionId, currentSessionId);
         }
         return incoming;
     }
