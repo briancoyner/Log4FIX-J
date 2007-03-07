@@ -41,11 +41,21 @@ import org.opentradingsolutions.log4fix.datadictionary.ClassPathDataDictionaryLo
 import org.opentradingsolutions.log4fix.datadictionary.DataDictionaryLoader;
 import org.opentradingsolutions.log4fix.ui.importer.ImporterController;
 
+import java.io.File;
+
 /**
  * @author Brian M. Coyner
  */
 public class Main {
 
+    /**
+     * This is the main entry point when starting Log4FIX in "standalone" mode.
+     * Use this starting point to import log files.
+     *
+     * @param args may contain a single absolute path to a log file that automatically
+     * imports.
+     * @throws Exception if the application fails to start.
+     */
     public static void main(String[] args) throws Exception {
 
         DataDictionaryLoader dictionaryLoader = new ClassPathDataDictionaryLoader();
@@ -60,5 +70,15 @@ public class Main {
 
         Log4FIX forImport = Log4FIX.createForImport(memoryLogModel, controller);
         forImport.show();
+
+        if (args.length == 1) {
+            String pathToFile = args[0];
+            File file = new File(pathToFile);
+            if (file.exists()) {
+                controller.importWithFile(file);
+            } else {
+                importerMemoryLog.onEvent("File Not Found: " + pathToFile);
+            }
+        }
     }
 }

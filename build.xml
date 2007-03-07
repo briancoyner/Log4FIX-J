@@ -36,7 +36,7 @@
 <project name="log4fix" basedir="." default="junit">
 
     <!-- Generated files properties -->
-    <property name="project.version" value="1.5"/>
+    <property name="project.version" value="1.6"/>
     <property name="artifact.name" value="${ant.project.name}-${project.version}"/>
     <property name="file.jar" value="${artifact.name}.jar"/>
     <property name="file.src.zip" value="${artifact.name}-src.zip"/>

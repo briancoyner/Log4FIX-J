@@ -69,22 +69,25 @@ public class ActionStart extends AbstractAction {
         maybeCreateFileChooser();
 
         if (openLogFile(fileChooser)) {
-
             final File selectedFile = fileChooser.getSelectedFile();
-            model.setLastAccessedFilePath(selectedFile.getPath());
-
-            Runnable task = new Runnable() {
-                public void run() {
-                    try {
-                        importer.start(model, new FileInputStream(selectedFile), callback);
-                    } catch (IOException ioException) {
-                        throw new RuntimeException(ioException);
-                    }
-                }
-            };
-            executor.execute(task);
+            importFile(selectedFile);
 
         }
+    }
+
+    public void importFile(final File selectedFile) {
+        model.setLastAccessedFilePath(selectedFile.getPath());
+
+        Runnable task = new Runnable() {
+            public void run() {
+                try {
+                    importer.start(model, new FileInputStream(selectedFile), callback);
+                } catch (IOException ioException) {
+                    throw new RuntimeException(ioException);
+                }
+            }
+        };
+        executor.execute(task);
     }
 
     private void maybeCreateFileChooser() {

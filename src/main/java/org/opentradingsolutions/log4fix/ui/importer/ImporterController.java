@@ -39,13 +39,14 @@ import org.opentradingsolutions.log4fix.importer.ImporterCallback;
 import org.opentradingsolutions.log4fix.importer.ImporterModel;
 
 import javax.swing.*;
+import java.io.File;
 
 /**
  * @author Brian M. Coyner
  */
 public class ImporterController {
 
-    private final Action start;
+    private final ActionStart start;
     private final Action stop;
     private final JLabel busyText;
 
@@ -67,6 +68,10 @@ public class ImporterController {
 
     public JComponent getBusyIcon() {
         return busyText;
+    }
+
+    public void importWithFile(File file) {
+        start.importFile(file);
     }
 
     private class DefaultImporterController implements ImporterCallback {
