@@ -68,7 +68,6 @@ public class LogMessageParser implements Runnable {
     private final BlockingQueue<String> fixMessages;
     public static final String SOH_STRING = "\u0001";
 
-
     /**
      * The parser takes ownership of the input stream once the {@link #run()} method
      * executes. The parser is responsible for closing the input stream upon completion

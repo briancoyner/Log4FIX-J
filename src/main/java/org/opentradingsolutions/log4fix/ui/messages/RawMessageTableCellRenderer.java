@@ -68,7 +68,11 @@ public class RawMessageTableCellRenderer extends DefaultTableCellRenderer {
         LogMessage message = tableModel.getElementAt(row);
 
         if (table.convertColumnIndexToModel(column) == 2) {
-            setValue(formatter.format(value));
+            if (value != null) {
+                setValue(formatter.format(value));
+            } else {
+                setValue("Not Found");
+            }
         }
 
         if (message.isIncoming()) {

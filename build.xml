@@ -36,7 +36,7 @@
 <project name="log4fix" basedir="." default="junit">
 
     <!-- Generated files properties -->
-    <property name="project.version" value="1.6"/>
+    <property name="project.version" value="1.6.1"/>
     <property name="artifact.name" value="${ant.project.name}-${project.version}"/>
     <property name="file.jar" value="${artifact.name}.jar"/>
     <property name="file.src.zip" value="${artifact.name}-src.zip"/>
@@ -83,6 +83,7 @@
         <pathelement location="${dir.build.tests}"/>
         <path refid="classpath.compile.main"/>
         <pathelement location="${dir.src.tests.resources}"/>
+        <pathelement location="${dir.lib}/junit-3.8.1.jar"/>
     </path>
 
     <target name="prepare">
