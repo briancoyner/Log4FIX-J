@@ -67,14 +67,15 @@ public class ClassPathDataDictionaryLoader implements DataDictionaryLoader {
                 || FixVersions.BEGINSTRING_FIX41.equals(beginString)
                 || FixVersions.BEGINSTRING_FIX42.equals(beginString)
                 || FixVersions.BEGINSTRING_FIX43.equals(beginString)
-                || FixVersions.BEGINSTRING_FIX44.equals(beginString))) {
+                || FixVersions.BEGINSTRING_FIX44.equals(beginString)
+                || FixVersions.BEGINSTRING_FIXT11.equals(beginString))) {
 
             throw new IllegalArgumentException("Invalid FIX BeginString: '" +
                     sessionId + "'.");
         }
 
         String dictionaryFileName = beginString.replaceAll("\\.", "") + ".xml";
-        // the dictionary is loaded from the quickfix.jar file.
+        // the dictionary is loaded from the QuickFIX JAR file.
         InputStream ddis = Thread.currentThread().getContextClassLoader().
                 getResourceAsStream(dictionaryFileName);
         if (ddis == null) {

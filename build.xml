@@ -36,7 +36,7 @@
 <project name="log4fix" basedir="." default="junit">
 
     <!-- Generated files properties -->
-    <property name="project.version" value="1.6.1"/>
+    <property name="project.version" value="2.0.0"/>
     <property name="artifact.name" value="${ant.project.name}-${project.version}"/>
     <property name="file.jar" value="${artifact.name}.jar"/>
     <property name="file.src.zip" value="${artifact.name}-src.zip"/>
@@ -66,7 +66,7 @@
     <!-- Classpath required to build Log4FIX -->
     <path id="classpath.compile.main">
         <pathelement location="${dir.lib}/glazedlists-1.6.0.jar"/>
-        <pathelement location="${dir.lib}/quickfixj-1.0.jar"/>
+        <pathelement location="${dir.lib}/quickfixj-all-1.4.0.jar"/>
         <pathelement location="${dir.lib}/swingx.jar"/>
     </path>
 
@@ -74,7 +74,7 @@
     <path id="classpath.compile.tests">
         <path refid="classpath.compile.main"/>
         <pathelement location="${dir.build.classes}"/>
-        <pathelement location="${dir.lib}/junit-3.8.1.jar"/>
+        <pathelement location="${dir.lib}/junit-4.7.jar"/>
     </path>
 
     <!-- Classpath required to execute the tests -->
@@ -83,7 +83,7 @@
         <pathelement location="${dir.build.tests}"/>
         <path refid="classpath.compile.main"/>
         <pathelement location="${dir.src.tests.resources}"/>
-        <pathelement location="${dir.lib}/junit-3.8.1.jar"/>
+        <pathelement location="${dir.lib}/junit-4.7.jar"/>
     </path>
 
     <target name="prepare">
@@ -185,7 +185,7 @@
             </fileset>
             <fileset dir=".">
                 <include name="${dir.lib}/glazedlists-1.6.0.jar"/>
-                <include name="${dir.lib}/quickfixj-1.0.jar"/>
+                <include name="${dir.lib}/quickfixj-all-1.4.0.jar"/>
                 <include name="${dir.lib}/swingx.jar"/>
                 <include name="lib/*license"/>
                 <include name="LICENSE"/>

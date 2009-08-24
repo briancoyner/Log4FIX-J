@@ -73,6 +73,10 @@ public class ClassPathDataDictionaryLoaderTest extends TestCase {
         assertDataDictionary(FixVersions.BEGINSTRING_FIX44);
     }
 
+    public void testFIXT11DataDictionaryLoads() throws Exception {
+        assertDataDictionary(FixVersions.BEGINSTRING_FIXT11);
+    }
+
     private void assertDataDictionary(String beginString) throws Exception {
         SessionID sessionId = new SessionID(beginString,
                 SENDER_COMP_ID, TARGET_COMP_ID);

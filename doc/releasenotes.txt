@@ -1,0 +1,9 @@
+
+
+August 24, 2009
+- Version 2.0
+- Upgraded to QuickFIX/J 1.4.0
+  - includes support for FIX 5.0 and FIXT 1.1
+- Upgraded to JUnit 4.7
+  - no major unit test code changes... just a library update
+  

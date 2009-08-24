@@ -65,6 +65,14 @@ public class MemoryLogFactory implements LogFactory {
     }
 
     /**
+     * @throws UnsupportedOperationException because this method should not be used
+     * because it is deprecated in QFJ 1.4
+     */
+    public Log create() {
+        throw new UnsupportedOperationException("Use the 'create(SessionID)' method.");
+    }
+
+    /**
      * @return a new {@link LiveMemoryLog}
      * @throws RuntimeException if the given <code>SessionID</code> is not found
      * in the collection of <code>MemoryLogModel</code> passed to the constructor.
