@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -38,26 +38,7 @@ import org.opentradingsolutions.log4fix.util.FIXMessageTestHelper;
 import quickfix.FieldNotFound;
 import quickfix.Message;
 import quickfix.SessionID;
-import quickfix.field.ClOrdID;
-import quickfix.field.HandlInst;
-import quickfix.field.IDSource;
-import quickfix.field.MDEntryPx;
-import quickfix.field.MDEntrySize;
-import quickfix.field.MDEntryType;
-import quickfix.field.MDReqID;
-import quickfix.field.MarketDepth;
-import quickfix.field.MsgSeqNum;
-import quickfix.field.MsgType;
-import quickfix.field.OrdType;
-import quickfix.field.OrderID;
-import quickfix.field.SecurityID;
-import quickfix.field.SenderCompID;
-import quickfix.field.SendingTime;
-import quickfix.field.Side;
-import quickfix.field.SubscriptionRequestType;
-import quickfix.field.Symbol;
-import quickfix.field.TargetCompID;
-import quickfix.field.TransactTime;
+import quickfix.field.*;
 import quickfix.fix42.MarketDataRequest;
 import quickfix.fix42.MarketDataSnapshotFullRefresh;
 import quickfix.fix42.NewOrderSingle;
@@ -66,10 +47,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * @author Brian M. Coyner
  * @todo - I am not fond of the tests in this class. There has to be a better way
  * to test this class.
- *
- * @author Brian M. Coyner
  */
 public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
     private Date sendingTime;
@@ -87,13 +67,11 @@ public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
         Message message = createValidMessage(sendingTime);
 
         String invalidRawMessage = testHelper.removeField(Symbol.FIELD, message.toString());
-        LogMessage logMessage = new LogMessage(1, true, getSessionId(), invalidRawMessage,
-                getDictionary());
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(), invalidRawMessage, getDictionary());
 
-        assertTrue("The message should still be valid because we have not " +
-                "parsed the message's fields.", logMessage.isValid());
+        assertTrue("The message should still be valid because we have not parsed the message's fields.", logMessage.isValid());
 
-        // parse the message then assert that errors were found.
+        // parse the message then assert that errors are found.
         logMessage.getLogFields();
 
         List<ValidationError> errorMessages = logMessage.getValidationErrorMessages();
@@ -190,13 +168,13 @@ public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
 //    }
 
     private void assertValidLogMessage(Message message,
-            LogMessage logMessage) throws FieldNotFound {
+                                       LogMessage logMessage) throws FieldNotFound {
         assertLogMessage(message, true, logMessage);
 
     }
 
     private void assertLogMessage(Message message, boolean isValidMessage,
-            LogMessage logMessage) throws FieldNotFound {
+                                  LogMessage logMessage) throws FieldNotFound {
 
         assertEquals(isValidMessage, logMessage.isValid());
         assertTrue(logMessage.isIncoming());

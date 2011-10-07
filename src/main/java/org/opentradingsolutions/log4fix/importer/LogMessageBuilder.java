@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -56,7 +56,7 @@ public class LogMessageBuilder implements Runnable {
 
 
     public LogMessageBuilder(ImporterModel model,
-            BlockingQueue<String> fixMessages) {
+                             BlockingQueue<String> fixMessages) {
         this.model = model;
         this.fixMessages = fixMessages;
     }
@@ -77,7 +77,7 @@ public class LogMessageBuilder implements Runnable {
                     logger.onEvent(rawMessage);
                     continue;
                 }
-                
+
                 int beginIndex = 2; // 8= takes up 0 and 1... value starts at 2.
                 int endIndex = rawMessage.indexOf(LogMessage.SOH_DELIMETER, beginIndex);
                 String beginString = rawMessage.substring(2, endIndex);
@@ -145,7 +145,7 @@ public class LogMessageBuilder implements Runnable {
     }
 
     private boolean isIncomingMessage(SessionID currentSessionId,
-            SessionID senderSessionId) throws InterruptedException{
+                                      SessionID senderSessionId) throws InterruptedException {
 
         boolean incoming;
         if (senderSessionId.getSenderCompID().equals(currentSessionId.getSenderCompID())

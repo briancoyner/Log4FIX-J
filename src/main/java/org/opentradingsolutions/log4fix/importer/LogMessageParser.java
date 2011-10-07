@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -34,11 +34,7 @@
 
 package org.opentradingsolutions.log4fix.importer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.InterruptedIOException;
+import java.io.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -58,6 +54,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class LogMessageParser implements Runnable {
 
+    public static final String POISON_PILL = "DONE";
+
     /**
      * The amount of time (ms) to wait while trying to add the poison pill to the
      * queue.
@@ -76,15 +74,14 @@ public class LogMessageParser implements Runnable {
      * action.
      *
      * @param inputStream a non-null stream that may or may not already
-     * contain data ready for reading (i.e. raw FIX message fields). It is assumed that
-     * the FIX message fields are delimited with the SOH character and terminated
-     * with a new line character.
+     *                    contain data ready for reading (i.e. raw FIX message fields). It is assumed that
+     *                    the FIX message fields are delimited with the SOH character and terminated
+     *                    with a new line character.
      * @param fixMessages a non-null, empty queue.
      * @throws IllegalArgumentException if the input stream is null or the queue is null.
-     * @throws IllegalStateException if the queue is not empty.
+     * @throws IllegalStateException    if the queue is not empty.
      */
-    public LogMessageParser(InputStream inputStream,
-            BlockingQueue<String> fixMessages) {
+    public LogMessageParser(InputStream inputStream, BlockingQueue<String> fixMessages) {
 
         if (inputStream == null) {
             throw new IllegalArgumentException("The log file input stream is null.");
@@ -140,11 +137,18 @@ public class LogMessageParser implements Runnable {
     private void addPoisonPillToQueue() {
 
         try {
-            if (!fixMessages.offer("DONE", CANCELATION_TIMEOUT, TimeUnit.MILLISECONDS)) {
+            System.out.println("Remaining Capacity: " + fixMessages.remainingCapacity());
+
+            if (!fixMessages.offer(POISON_PILL, CANCELATION_TIMEOUT, TimeUnit.MILLISECONDS)) {
+                System.out.println("Failed to offer poison pill... clearing the queue and adding the poison pill.");
                 fixMessages.clear();
+                fixMessages.offer(POISON_PILL);
+            } else {
+                System.out.println("Added the poison pill.");
             }
+
         } catch (InterruptedException e) {
-            // @todo - determine the correct interruption policy
+            // the thread is going to exit. 
         }
     }
 

@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -35,23 +35,11 @@
 package org.opentradingsolutions.log4fix.core;
 
 import org.opentradingsolutions.log4fix.util.FIXMessageHelper;
-import quickfix.DataDictionary;
-import quickfix.Field;
-import quickfix.FieldConvertError;
-import quickfix.FieldNotFound;
-import quickfix.Group;
-import quickfix.InvalidMessage;
-import quickfix.Message;
-import quickfix.SessionID;
+import quickfix.*;
 import quickfix.field.MsgType;
 import quickfix.field.SendingTime;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Brian M. Coyner
@@ -77,7 +65,7 @@ public class LogMessage implements Comparable {
     private int messageIndex;
 
     public LogMessage(int messageIndex, boolean incoming, SessionID sessionId,
-            String rawMessage, DataDictionary dictionary) {
+                      String rawMessage, DataDictionary dictionary) {
         this.messageIndex = messageIndex;
 
         isValid = true;
@@ -111,8 +99,7 @@ public class LogMessage implements Comparable {
      * @return true if the message is valid.
      */
     public boolean isValid() {
-        return isValid && (validationErrors == null ||
-                validationErrors.size() == 0);
+        return isValid && (validationErrors == null || validationErrors.size() == 0);
     }
 
     public boolean isIncoming() {
@@ -126,7 +113,7 @@ public class LogMessage implements Comparable {
      * describing the problem.
      *
      * @return the sending time of the message or null if the message was missing the
-     * sending time.
+     *         sending time.
      */
     public Date getSendingTime() {
         return sendingTime;
@@ -137,7 +124,7 @@ public class LogMessage implements Comparable {
      * <code>true</code>.
      *
      * @return a list of one or more validation error messages; null if there are
-     * no validation error messages.
+     *         no validation error messages.
      */
     public List<ValidationError> getValidationErrorMessages() {
         return validationErrors;
@@ -149,10 +136,10 @@ public class LogMessage implements Comparable {
      * ensures that we display the fields in the same order as the raw message string.
      * Why? Because the message class does not provide a way to get the fields in
      * the sent order. The only time we care about the field order is when logging.
-     *
+     * <p/>
      * This method executes on the Event Dispatch Thread, so we are not slowing down
      * the quickfix thread.
-     *
+     * <p/>
      * This object does <strong>not</strong> cache the field objects. Each invocation
      * of this method creates a new list of <code>LogField</code> objects. This is
      * done so that memory utilization is kept low. The caller should clear the returned
@@ -161,7 +148,7 @@ public class LogMessage implements Comparable {
      * {@link org.opentradingsolutions.log4fix.ui.messages.ViewModel} does.
      *
      * @return locally created <tt>List</tt> of <tt>LogField</tt> objects; not a
-     * cached value.
+     *         cached value.
      */
     public List<LogField> getLogFields() {
 
@@ -207,12 +194,12 @@ public class LogMessage implements Comparable {
         LogField logField = LogField.createLogField(messageType, field, dictionary);
 
         final DataDictionary.GroupInfo groupInfo = dictionary.getGroup(
-                    messageTypeValue, field.getTag());
+                messageTypeValue, field.getTag());
         if (groupInfo != null) {
 
             int delimeterField = groupInfo.getDelimeterField();
             Group group = new Group(field.getTag(), delimeterField);
-            int numberOfGroups =  Integer.valueOf((String) field.getObject());
+            int numberOfGroups = Integer.valueOf((String) field.getObject());
             for (int index = 0; index < numberOfGroups; index++) {
                 LogGroup logGroup = new LogGroup(messageType, field, dictionary);
 

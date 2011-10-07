@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -34,11 +34,7 @@
 
 package org.opentradingsolutions.log4fix.ui.messages;
 
-import ca.odell.glazedlists.BasicEventList;
-import ca.odell.glazedlists.EventList;
-import ca.odell.glazedlists.FilterList;
-import ca.odell.glazedlists.GlazedLists;
-import ca.odell.glazedlists.SortedList;
+import ca.odell.glazedlists.*;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.impl.beans.BeanTableFormat;
 import ca.odell.glazedlists.impl.filter.TextMatcher;
@@ -49,11 +45,7 @@ import ca.odell.glazedlists.swing.EventListModel;
 import ca.odell.glazedlists.swing.EventSelectionModel;
 import ca.odell.glazedlists.swing.EventTableModel;
 import org.jdesktop.swingx.treetable.TreeTableModel;
-import org.opentradingsolutions.log4fix.core.LogEvent;
-import org.opentradingsolutions.log4fix.core.LogField;
-import org.opentradingsolutions.log4fix.core.LogMessage;
-import org.opentradingsolutions.log4fix.core.MemoryLogModel;
-import org.opentradingsolutions.log4fix.core.ValidationError;
+import org.opentradingsolutions.log4fix.core.*;
 import org.opentradingsolutions.log4fix.ui.fields.FieldTreeNode;
 import org.opentradingsolutions.log4fix.ui.fields.FieldTreeTableModel;
 import org.opentradingsolutions.log4fix.ui.fields.RootNode;

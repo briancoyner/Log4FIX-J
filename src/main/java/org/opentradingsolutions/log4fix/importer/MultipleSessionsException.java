@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -39,7 +39,7 @@ import quickfix.SessionID;
 /**
  * Log4FIX currently only knows how to correctly import log files with a single
  * session. If a second session Id is found then this exception raises and stops
- * the thread building the log messages. 
+ * the thread building the log messages.
  *
  * @author Brian M. Coyner
  */
@@ -48,8 +48,8 @@ public class MultipleSessionsException extends InterruptedException {
     private final SessionID secondSessionId;
 
     public MultipleSessionsException(SessionID firstSessionId,
-            SessionID secondSessionId) {
-        super ("Multiple FIX sessions were found in the log file. Log4FIX does " +
+                                     SessionID secondSessionId) {
+        super("Multiple FIX sessions were found in the log file. Log4FIX does " +
                 "not handle this situation (yet). Here are the sessions:");
         this.firstSessionId = firstSessionId;
         this.secondSessionId = secondSessionId;

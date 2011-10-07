@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -53,25 +53,25 @@ import java.util.Map;
 /**
  * Here is an example of how you might integrate Log4FIX with your QuickFIX/J
  * application:
- *
+ * <p/>
  * <pre>
  * SessionSettings sessionSettings = . . .;
- *
+ * <p/>
  * // Log4FIX requires a QuickFIX SessionSettings object
  * Log4Fix log4Fix = Log4Fix.createForLiveUpdates(sessionSettings);
  * LogFactory logFactory = log4Fix.getLogFactory();
- *
+ * <p/>
  * Application application = . . .;
  * MessageStoreFactory storeFactory = . . .;
  * SessionFactory sessionFactory = new DefaultSessionFactory(
  *         trader, storeFactory, logFactory);
- *
+ * <p/>
  * // finish QuickFIX configuration
- *
+ * <p/>
  * // show the UI
  * log4Fix.show();
  * </pre>
- *
+ * <p/>
  * <p>
  * The above obtains a <tt>Log4FIX</tt> instance by passing the
  * <tt>quickfix.SessionSettings</tt> object. Log4FIX interrogates the session settings
@@ -79,8 +79,8 @@ import java.util.Map;
  * receives all FIX message matching the session Id. This allows Log4FIX to route
  * messages to the appropriate "view".
  * </p>
- *
- * <p>
+ * <p/>
+ * <p/>
  * You can {@link #show()} the Log4FIX frame anytime. You do not have to wait
  * for the session to connect to the counterparty.
  *
@@ -110,7 +110,7 @@ public class Log4FIX {
      * FIX messages.
      *
      * @param memoryLogModelsBySessionId map containing session Ids
-     * and <tt>MemoryLogModel</tt>s.
+     *                                   and <tt>MemoryLogModel</tt>s.
      * @return an instance that is ready to display real-time messages.
      * @see #getLogFactory()
      * @see #show()
@@ -139,7 +139,7 @@ public class Log4FIX {
      * FIX messages.
      */
     public static Log4FIX createForImport(final MemoryLogModel memoryLogModel,
-            ImporterController controller) {
+                                          ImporterController controller) {
         ViewBuilder viewBuilder = new ViewBuilder();
 
         Log4FIX log4FIX = new Log4FIX();

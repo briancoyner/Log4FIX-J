@@ -1,6 +1,6 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2007 opentradingsolutions.org  All rights reserved.
+ * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -14,14 +14,14 @@
  *    the documentation and/or other materials provided with the
  *    distribution.
  *
- * 3. Neither the name of the product (Log4FIX), nor opentradingsolutions.org,
+ * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
  *    nor the names of its contributors may be used to endorse or promote
  *    products derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL OPENTRADINGSOLUTIONS.ORG OR
+ * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -36,21 +36,13 @@ package org.opentradingsolutions.log4fix.importer;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import org.opentradingsolutions.log4fix.core.AbstractSessionTestCase;
-import org.opentradingsolutions.log4fix.core.LogField;
-import org.opentradingsolutions.log4fix.core.LogMessage;
-import org.opentradingsolutions.log4fix.core.MemoryLogModel;
-import org.opentradingsolutions.log4fix.core.MockMemoryLogModel;
+import org.opentradingsolutions.log4fix.core.*;
 import org.opentradingsolutions.log4fix.datadictionary.ClassPathDataDictionaryLoader;
 import org.opentradingsolutions.log4fix.datadictionary.DataDictionaryLoader;
 import org.opentradingsolutions.log4fix.util.FIXMessageHelper;
 import quickfix.SessionID;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.util.List;
 
@@ -61,7 +53,9 @@ public class ImporterFileTest extends AbstractSessionTestCase {
 
     public static final String EXPECTED_MESSAGE_COUNT = "ExpectedMessageCount";
 
-    /** Are the messages "Incoming", "Outgoing" or "Both" **/
+    /**
+     * Are the messages "Incoming", "Outgoing" or "Both" *
+     */
     public static final String EXPECTED_DIRECTION = "Direction";
     public static final String EXPECTED_BEGIN_STRING = "ExpectedBeginString";
     public static final String EXPECTED_SENDER_COMP_ID = "ExpectedSenderCompId";
