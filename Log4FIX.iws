@@ -41,78 +41,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12c71bae-f7f9-4899-b394-34e27f43a267" name="Default" comment="Fixed a bug causing the UI to crash if the sending time is null. We now just ignore null sending times and move on.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/ImporterFileTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/ImporterFileTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/util/FIXMessageTestHelper.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/util/FIXMessageTestHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/fields/FieldTreeNodeTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/fields/FieldTreeNodeTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/RootNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/RootNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLog.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogFieldTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogFieldTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilderTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/Log4FIX.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/Log4FIX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/MessageSearchField.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/MessageSearchField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/ValidationError.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/ValidationError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/LogFileFilter.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/LogFileFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/GlazedListsMemoryLogModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/GlazedListsMemoryLogModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/MultipleSessionsException.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/MultipleSessionsException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/datadictionary/ClassPathDataDictionaryLoader.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/datadictionary/ClassPathDataDictionaryLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/AbstractSessionTestCase.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/AbstractSessionTestCase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/datadictionary/DataDictionaryLoader.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/datadictionary/DataDictionaryLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/ImporterMemoryLog.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/ImporterMemoryLog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LiveMemoryLogTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LiveMemoryLogTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/SessionIdResolver.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/SessionIdResolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/util/FIXMessageHelper.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/util/FIXMessageHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelHideHeartbeatMessagesTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelHideHeartbeatMessagesTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/ImporterTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/ImporterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/DefaultSessionIdResolver.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/DefaultSessionIdResolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/datadictionary/ClassPathDataDictionaryLoaderTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/datadictionary/ClassPathDataDictionaryLoaderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogEvent.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/MemoryLogModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/MemoryLogModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/FieldHighlighter.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/FieldHighlighter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/FieldTreeTableModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/FieldTreeTableModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogGroup.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogGroup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/ImporterModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/ImporterModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/ImporterCallback.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/ImporterCallback.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iml" afterPath="$PROJECT_DIR$/Log4FIX.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogField.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/FieldTreeNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/fields/FieldTreeNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/PassThroughSessionIdResolver.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/PassThroughSessionIdResolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/MessageFilterator.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/MessageFilterator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/ViewModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelSortTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/messages/ViewModelSortTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLog.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ThreadPerTaskExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ThreadPerTaskExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ActionStart.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ActionStart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/datadictionary/SessionDataDictionaryLoader.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/datadictionary/SessionDataDictionaryLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/fields/RootNodeTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/fields/RootNodeTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/quickfixj-all-1.4.0.jar" afterPath="$PROJECT_DIR$/lib/quickfixj-all-1.5.1.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogEventTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogEventTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iws" afterPath="$PROJECT_DIR$/Log4FIX.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/MemoryLogModelFactory.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/MemoryLogModelFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLogTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/AbstractMemoryLogTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/HeartbeatFilterator.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/HeartbeatFilterator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/MockImporterCallback.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/MockImporterCallback.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.ipr" afterPath="$PROJECT_DIR$/Log4FIX.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLogModel.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/MockMemoryLogModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/RawMessageTableCellRenderer.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/messages/RawMessageTableCellRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/Main.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageBuilderTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageBuilderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/importer/LogFileFilterTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/ui/importer/LogFileFilterTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/MemoryLogFactory.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/MemoryLogFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ImporterController.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ImporterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ActionStop.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/ui/importer/ActionStop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LiveMemoryLog.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LiveMemoryLog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogFileParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogFileParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/GlazedListsMemoryLogModelTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/GlazedListsMemoryLogModelTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/Importer.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/Importer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java" afterPath="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -295,19 +225,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogMessageParserTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LogMessageParserTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="55" selection-start="5173" selection-end="5173" vertical-scroll-proportion="0.47924528">
+            <state line="140" column="53" selection-start="5381" selection-end="5381" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogMessageParser.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LogMessageParser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="44" selection-start="6025" selection-end="6025" vertical-scroll-proportion="0.0">
+            <state line="142" column="14" selection-start="5646" selection-end="5646" vertical-scroll-proportion="0.44903225">
               <folding />
             </state>
           </provider>
@@ -407,8 +337,8 @@
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java" />
       </list>
     </option>
   </component>
@@ -994,7 +924,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="944" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29952154" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1004,9 +934,9 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24935733" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2542892" sideWeight="0.7026699" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2542892" sideWeight="0.7026699" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45454547" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28883496" sideWeight="0.99938726" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28883496" sideWeight="0.99938726" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1206,16 +1136,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="44" selection-start="6025" selection-end="6025" vertical-scroll-proportion="0.0">
+        <state line="140" column="53" selection-start="5381" selection-end="5381" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/importer/LogMessageParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="55" selection-start="5173" selection-end="5173" vertical-scroll-proportion="0.47924528">
+        <state line="142" column="14" selection-start="5646" selection-end="5646" vertical-scroll-proportion="0.44903225">
           <folding />
         </state>
       </provider>

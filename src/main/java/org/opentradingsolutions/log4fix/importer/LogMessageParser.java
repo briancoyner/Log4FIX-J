@@ -137,16 +137,10 @@ public class LogMessageParser implements Runnable {
     private void addPoisonPillToQueue() {
 
         try {
-            System.out.println("Remaining Capacity: " + fixMessages.remainingCapacity());
-
             if (!fixMessages.offer(POISON_PILL, CANCELATION_TIMEOUT, TimeUnit.MILLISECONDS)) {
-                System.out.println("Failed to offer poison pill... clearing the queue and adding the poison pill.");
                 fixMessages.clear();
                 fixMessages.offer(POISON_PILL);
-            } else {
-                System.out.println("Added the poison pill.");
-            }
-
+            } 
         } catch (InterruptedException e) {
             // the thread is going to exit. 
         }
