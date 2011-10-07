@@ -34,13 +34,11 @@
 
 package org.opentradingsolutions.log4fix.core;
 
+import org.junit.Assert;
 import org.opentradingsolutions.log4fix.util.FIXMessageTestHelper;
-import quickfix.FieldNotFound;
 import quickfix.Message;
 import quickfix.SessionID;
 import quickfix.field.*;
-import quickfix.fix42.MarketDataRequest;
-import quickfix.fix42.MarketDataSnapshotFullRefresh;
 import quickfix.fix42.NewOrderSingle;
 
 import java.util.Date;
@@ -48,8 +46,6 @@ import java.util.List;
 
 /**
  * @author Brian M. Coyner
- * @todo - I am not fond of the tests in this class. There has to be a better way
- * to test this class.
  */
 public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
     private Date sendingTime;
@@ -69,7 +65,10 @@ public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
         String invalidRawMessage = testHelper.removeField(Symbol.FIELD, message.toString());
         LogMessage logMessage = new LogMessage(1, true, getSessionId(), invalidRawMessage, getDictionary());
 
-        assertTrue("The message should still be valid because we have not parsed the message's fields.", logMessage.isValid());
+        // the message should not be invalid yet because we yet to parse the message.
+        if (!logMessage.isValid()) {
+            Assert.fail("LogMessage has validation errors: " + logMessage.getValidationErrorMessages());
+        }
 
         // parse the message then assert that errors are found.
         logMessage.getLogFields();
@@ -79,173 +78,8 @@ public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
         assertNotNull(errorMessages.get(0).getMessage());
     }
 
-//    /**
-//     * The message is missing the symbol field and sending time header field.
-//     */
-//    public void testInvalidMessageWithMultipleProblems() {
-//        Message message = createValidMessage(null);
-//
-//        String invalidRawMessage = FIXMessageTestHelper.removeField(
-//                Symbol.FIELD, message.toString());
-//        LogMessage logMessage = new LogMessage(true, getSessionId(), invalidRawMessage,
-//                getDictionary());
-//        assertFalse(logMessage.isValid());
-//
-//        logMessage.getLogFields();
-//
-//        List<Exception> errorMessages = logMessage.getValidationErrorMessages();
-//        assertEquals(2, errorMessages.size());
-//        assertNotNull(errorMessages.get(0).getMessage());
-//        assertEquals(SendingTime.FIELD, ((FieldNotFound) errorMessages.get(1)).field);
-//    }
-//
-//
-//    public void testValidMessageWithOneRepeatingGroup() throws FieldNotFound {
-//        Message message = createMarketDataMessage();
-//        LogMessage logMessage = new LogMessage(true, getSessionId(),
-//                message.toString(), getDictionary());
-//        assertValidLogMessage(message, logMessage);
-//
-//        List<LogField> logFields = logMessage.getLogFields();
-//
-//        int expectedGroupFields = 1;
-//        int actualGroupFields = 0;
-//
-//        for (LogField logField : logFields) {
-//            if (logField.isRepeatingGroup()) {
-//
-//                actualGroupFields++;
-//                List<LogGroup> groups = logField.getGroups();
-//
-//                // fail-fast if the group count is not correct
-//                assertEquals(2, groups.size());
-//                for (LogGroup logGroup : groups) {
-//                    List<LogField> fields = logGroup.getFields();
-//                    assertEquals(4, fields.size());
-//                }
-//            }
-//        }
-//
-//        assertEquals("Group Count.", expectedGroupFields, actualGroupFields);
-//    }
-//
-//    public void testValidMessageWithTwoRepeatingGroups() throws FieldNotFound {
-//        Message message = createMarketDataRequest();
-//        LogMessage logMessage = new LogMessage(true, getSessionId(),
-//                message.toString(), getDictionary());
-//        assertValidLogMessage(message, logMessage);
-//
-//        List<LogField> logFields = logMessage.getLogFields();
-//
-//        int expectedGroupFields = 2;
-//        int actualGroupFields = 0;
-//        for (LogField logField : logFields) {
-//            if (logField.isRepeatingGroup()) {
-//
-//                actualGroupFields++;
-//                List<LogGroup> groups = logField.getGroups();
-//
-//                if (logField.getTag() == NoRelatedSym.FIELD) {
-//                    // fail-fast if the group count is not correct
-//                    assertEquals(1, groups.size());
-//                    for (LogGroup logGroup : groups) {
-//                        List<LogField> fields = logGroup.getFields();
-//                        assertEquals(3, fields.size());
-//                    }
-//                } else if (logField.getTag() == NoMDEntryTypes.FIELD){
-//                    // fail-fast if the group count is not correct
-//                    assertEquals(2, groups.size());
-//                    for (LogGroup logGroup : groups) {
-//                        List<LogField> fields = logGroup.getFields();
-//                        assertEquals(1, fields.size());
-//                    }
-//                }
-//            }
-//        }
-//
-//        assertEquals("Group Count.", expectedGroupFields, actualGroupFields);
-//
-//    }
-
-    private void assertValidLogMessage(Message message,
-                                       LogMessage logMessage) throws FieldNotFound {
-        assertLogMessage(message, true, logMessage);
-
-    }
-
-    private void assertLogMessage(Message message, boolean isValidMessage,
-                                  LogMessage logMessage) throws FieldNotFound {
-
-        assertEquals(isValidMessage, logMessage.isValid());
-        assertTrue(logMessage.isIncoming());
-        assertSame(getSessionId(), logMessage.getSessionId());
-        assertEquals(message.toString().replace(LogMessage.SOH_DELIMETER,
-                LogMessage.DEFAULT_DELIMETER),
-                logMessage.getRawMessage());
-
-        assertEquals(getDictionary().getValueName(MsgType.FIELD,
-                message.getHeader().getString(MsgType.FIELD)),
-                logMessage.getMessageTypeName());
-
-        if (isValidMessage) {
-            assertNull(logMessage.getValidationErrorMessages());
-        } else {
-            assertNotNull(logMessage.getValidationErrorMessages());
-        }
-    }
-
     private Message createValidMessage(Date sendingTime) {
         return createMessage(sendingTime, true);
-    }
-
-    private Message createMarketDataMessage() {
-        MarketDataSnapshotFullRefresh message =
-                new MarketDataSnapshotFullRefresh(new Symbol("AAPL"));
-
-        MarketDataSnapshotFullRefresh.NoMDEntries group =
-                new MarketDataSnapshotFullRefresh.NoMDEntries();
-
-        group.set(new MDEntryType('0'));
-        group.set(new MDEntryPx(12.32));
-        group.set(new MDEntrySize(100));
-        group.set(new OrderID("ORDERID"));
-        message.addGroup(group);
-
-        group.set(new MDEntryType('1'));
-        group.set(new MDEntryPx(12.32));
-        group.set(new MDEntrySize(100));
-        group.set(new OrderID("ORDERID"));
-        message.addGroup(group);
-
-        setHeaderFields(message, sendingTime, true);
-
-        return message;
-    }
-
-    private Message createMarketDataRequest() {
-        MarketDataRequest message = new MarketDataRequest(new MDReqID("1"),
-                new SubscriptionRequestType(SubscriptionRequestType.SNAPSHOT_PLUS_UPDATES),
-                new MarketDepth(0));
-
-        MarketDataRequest.NoRelatedSym group =
-                new MarketDataRequest.NoRelatedSym();
-        group.set(new Symbol("ADSX"));
-        group.set(new SecurityID("SECRET"));
-        group.set(new IDSource("1"));
-        message.addGroup(group);
-
-
-        MarketDataRequest.NoMDEntryTypes type = new MarketDataRequest.NoMDEntryTypes();
-        type.set(new MDEntryType(MDEntryType.BID));
-        message.addGroup(type);
-
-        type = new MarketDataRequest.NoMDEntryTypes();
-        type.set(new MDEntryType(MDEntryType.OFFER));
-        message.addGroup(type);
-
-        setHeaderFields(message, sendingTime, true);
-
-        return message;
     }
 
     private Message createMessage(Date sendingTime, boolean isValid) {

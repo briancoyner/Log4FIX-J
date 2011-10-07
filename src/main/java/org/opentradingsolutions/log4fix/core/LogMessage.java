@@ -64,8 +64,7 @@ public class LogMessage implements Comparable {
     private boolean isValid;
     private int messageIndex;
 
-    public LogMessage(int messageIndex, boolean incoming, SessionID sessionId,
-                      String rawMessage, DataDictionary dictionary) {
+    public LogMessage(int messageIndex, boolean incoming, SessionID sessionId, String rawMessage, DataDictionary dictionary) {
         this.messageIndex = messageIndex;
 
         isValid = true;
