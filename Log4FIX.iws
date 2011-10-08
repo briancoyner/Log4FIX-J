@@ -42,7 +42,7 @@
   <component name="ChangeListManager">
     <list default="true" id="12c71bae-f7f9-4899-b394-34e27f43a267" name="Default" comment="Fixed a bug causing the UI to crash if the sending time is null. We now just ignore null sending times and move on.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iws" afterPath="$PROJECT_DIR$/Log4FIX.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -203,10 +203,10 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LogMessageGetFieldsTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LogMessageGetFieldsTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="26" selection-start="2409" selection-end="2409" vertical-scroll-proportion="0.0">
+            <state line="59" column="0" selection-start="2361" selection-end="2361" vertical-scroll-proportion="0.35726795">
               <folding />
             </state>
           </provider>
@@ -221,10 +221,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="45" selection-start="170" selection-end="170" vertical-scroll-proportion="0.077419356">
+            <state line="3" column="25" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -325,9 +325,9 @@
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/ValidationError.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/manifest.mf" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
       </list>
     </option>
   </component>
@@ -537,7 +537,7 @@
     <option name="referencePos" value="0" />
     <option name="showLabels" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.Run All Tests">
+  <component name="RunManager" selected="JUnit.LogMessageGetFieldsTest">
     <configuration default="false" name="LogMessageGetFieldsTest.testInvalidMessage" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false">
         <pattern>
@@ -594,7 +594,13 @@
         <value defaultName="wholeProject" />
       </option>
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55528" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -766,12 +772,12 @@
       <method />
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.LogMessageGetFieldsTest.testInvalidMessage" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.LogMessageGetFieldsTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.LogMessageParserTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Mail With File" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.Run All Tests" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Mail With File" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.Run All Tests" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.LogMessageGetFieldsTest.testInvalidMessage" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.LogMessageGetFieldsTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.LogMessageParserTest" />
     </list>
   </component>
   <component name="SQLPlugin.ProjectConfiguration">
@@ -855,6 +861,7 @@
     <frame x="343" y="48" width="1680" height="944" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2985437" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -862,8 +869,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25796568" sideWeight="0.75242716" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45454547" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23907767" sideWeight="0.99938726" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4538835" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23907767" sideWeight="0.99938726" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288835" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -878,7 +885,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2803398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Profile" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2985437" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1050,13 +1056,6 @@
         <state line="1639" column="24" selection-start="64986" selection-end="64986" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="26" selection-start="2409" selection-end="2409" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/GlazedListsMemoryLogModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="32" selection-start="1631" selection-end="1651" vertical-scroll-proportion="0.0">
@@ -1080,7 +1079,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="45" selection-start="170" selection-end="170" vertical-scroll-proportion="0.077419356">
+        <state line="3" column="25" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="0" selection-start="2361" selection-end="2361" vertical-scroll-proportion="0.35726795">
           <folding />
         </state>
       </provider>

@@ -35,12 +35,14 @@
 package org.opentradingsolutions.log4fix.core;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.opentradingsolutions.log4fix.util.FIXMessageTestHelper;
 import quickfix.Message;
 import quickfix.SessionID;
 import quickfix.field.*;
 import quickfix.fix42.NewOrderSingle;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -54,11 +56,12 @@ public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
 
     @Override
     protected void doSetUp() throws Exception {
-        sendingTime = new Date();
+        sendingTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse("2010-01-01 11:01:56");
         messageSequenceNumber = 1;
         testHelper = new FIXMessageTestHelper(getSessionId());
     }
 
+    
     public void testInvalidMessage() {
         Message message = createValidMessage(sendingTime);
 
@@ -86,7 +89,7 @@ public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
         Message message = new NewOrderSingle(new ClOrdID("12345"),
                 new HandlInst(HandlInst.AUTOMATED_EXECUTION_ORDER_PRIVATE),
                 new Symbol("COYNER"), new Side(Side.BUY),
-                new TransactTime(new Date()), new OrdType(OrdType.MARKET));
+                new TransactTime(sendingTime), new OrdType(OrdType.MARKET));
 
         setHeaderFields(message, sendingTime, isValid);
         return message;
