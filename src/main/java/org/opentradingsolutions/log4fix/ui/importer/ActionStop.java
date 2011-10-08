@@ -49,6 +49,7 @@ public class ActionStop extends AbstractAction {
     public ActionStop(Importer importer) {
         super("Cancel");
         this.importer = importer;
+        setEnabled(false);
     }
 
     public void actionPerformed(ActionEvent e) {
