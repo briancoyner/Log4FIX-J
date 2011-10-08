@@ -1,7 +1,14 @@
+October 2011
+- Version 2.0.0
+- Upgraded to QuickFIX/J 1.5.1
+- Fixed a few minor bugs
+- Works with Java 6
+- Binary distributions are no longer available. You must build an executable JAR from source using Ant (don't worry it is easy).
+  - See the readme.md file.
 
 
 August 24, 2009
-- Version 2.0
+- Version 1.5
 - Upgraded to QuickFIX/J 1.4.0
   - includes support for FIX 5.0 and FIXT 1.1
 - Upgraded to JUnit 4.7
