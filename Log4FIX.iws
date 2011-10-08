@@ -43,6 +43,7 @@
     <list default="true" id="12c71bae-f7f9-4899-b394-34e27f43a267" name="Default" comment="Fixed a bug causing the UI to crash if the sending time is null. We now just ignore null sending times and move on.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Log4FIX.iws" afterPath="$PROJECT_DIR$/Log4FIX.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -230,10 +231,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogMessageParserTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LogMessageParserTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="0" selection-start="5612" selection-end="5612" vertical-scroll-proportion="0.8447059">
+            <state line="149" column="0" selection-start="5612" selection-end="5612" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -257,10 +258,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="25" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0">
+            <state line="9" column="19" selection-start="215" selection-end="215" vertical-scroll-proportion="0.12705882">
               <folding />
             </state>
           </provider>
@@ -325,9 +326,9 @@
         <option value="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/ValidationError.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/opentradingsolutions/log4fix/core/LogMessage.java" />
         <option value="$PROJECT_DIR$/src/main/resources/manifest.mf" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -1209,13 +1210,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="25" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/core/LogMessageGetFieldsTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="67" column="56" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.0">
@@ -1246,7 +1240,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/opentradingsolutions/log4fix/importer/LogMessageParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="0" selection-start="5612" selection-end="5612" vertical-scroll-proportion="0.8447059">
+        <state line="149" column="0" selection-start="5612" selection-end="5612" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="19" selection-start="215" selection-end="215" vertical-scroll-proportion="0.12705882">
           <folding />
         </state>
       </provider>
