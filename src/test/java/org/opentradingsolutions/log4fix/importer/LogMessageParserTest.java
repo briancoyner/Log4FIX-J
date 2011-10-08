@@ -35,11 +35,13 @@
 package org.opentradingsolutions.log4fix.importer;
 
 import junit.framework.TestCase;
+import org.junit.Assert;
 
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -55,12 +57,24 @@ public class LogMessageParserTest extends TestCase {
     private PipedOutputStream out;
     private static final int POLL_TIMEOUT = 500;
     private Thread parserThread;
-    
+    private CountDownLatch didAddToQueueLatch;
+
     @Override
     public void setUp() throws Exception {
         out = new PipedOutputStream();
         in = new PipedInputStream(out);
-        queue = new LinkedBlockingQueue<String>(1);
+
+        didAddToQueueLatch = new CountDownLatch(1);
+
+        queue = new LinkedBlockingQueue<String>(1) {
+            @Override
+            public void put(String s) throws InterruptedException {
+                super.put(s);
+
+                // kind of a hack because we are using intimate knowledge of what API calls the parser uses. It works, though.
+                didAddToQueueLatch.countDown();
+            }
+        };
         parserThread = new Thread(new LogMessageParser(in, queue));
     }
 
@@ -103,8 +117,7 @@ public class LogMessageParserTest extends TestCase {
         assertEquals(POISON_PILL, queue.poll(POLL_TIMEOUT, TimeUnit.MILLISECONDS));
     }
 
-    public void testInterruptingBlockedQueuePublishesPoisonPillAndThreadDies()
-            throws Exception {
+    public void testInterruptingBlockedQueuePublishesPoisonPillAndThreadDies() throws Exception {
 
         parserThread.start();
 
@@ -114,7 +127,11 @@ public class LogMessageParserTest extends TestCase {
         // write a single message
         out.write(("8=FIX.4.2\u00019=456\u000135=D\u000110=568\u0001" + "\n").getBytes());
 
-        waitForInputStreamToBecomeEmpty();
+        // wait for the parser to receive and enqueue the message FIX message
+        boolean success = didAddToQueueLatch.await(5, TimeUnit.SECONDS);
+        if (!success) {
+            Assert.fail("The FIX message was not enqueued on the parser's queue.");
+        }
 
         assertFullQueue();
 
@@ -128,22 +145,6 @@ public class LogMessageParserTest extends TestCase {
         // to make room for the poison pill. Remember that the queue size is 1. Therefore the parser simply clears the
         // entire queue of messages to make room for the single poison pill message.
         assertEquals("DONE", queue.poll(POLL_TIMEOUT, TimeUnit.MILLISECONDS));
-    }
-
-
-    // Wait for parser to extract all messages from the stream. This should ensure that our
-    // bounded queue is blocked waiting to add another message. The caller should check the parser's queue size to
-    // double-check that the message sits in the queue.
-    private void waitForInputStreamToBecomeEmpty() throws IOException, InterruptedException {
-
-        final int maxTries = 20;
-        int attempts = 0;
-        while (attempts++ < maxTries && in.available() != 0) {
-            Thread.sleep(50);
-        }
-
-        assertEquals("Available bytes.", 0, in.available());
-
     }
 
     private void assertFullQueue() {
