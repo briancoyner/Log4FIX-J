@@ -72,27 +72,22 @@ public class ViewModel implements ListSelectionListener {
     private EventSelectionModel<LogMessage> rawMessagesSelectionModel;
     private TableCellRenderer rawMessagesTableCellRenderer;
 
-    private BasicEventList<LogField> crackedFields;
-
-    private EventListModel<LogEvent> eventsListModel;
-    private FieldTreeTableModel treeTableModel;
-    private MemoryLogModel memoryLogModel;
-    private SortedList<LogMessage> sortedList;
-    private FilterList<LogMessage> filteredList;
+    private final FieldTreeTableModel treeTableModel;
+    private final MemoryLogModel memoryLogModel;
+    private final SortedList<LogMessage> sortedList;
+    private final FilterList<LogMessage> filteredList;
+    private final EventListModel<LogEvent> eventsListModel;
 
     public ViewModel(MemoryLogModel memoryLogModel) {
         this.memoryLogModel = memoryLogModel;
 
-        EventList<LogMessage> originalList = (EventList<LogMessage>)
-                memoryLogModel.getMessages();
+        EventList<LogMessage> originalList = (EventList<LogMessage>) memoryLogModel.getMessages();
         filteredList = new FilterList<LogMessage>(originalList);
         sortedList = new SortedList<LogMessage>(filteredList);
         createRaw(sortedList);
 
-        crackedFields = new BasicEventList<LogField>();
         treeTableModel = new FieldTreeTableModel();
-
-        createEvents(memoryLogModel.getEvents());
+        eventsListModel = new EventListModel<LogEvent>((EventList<LogEvent>) memoryLogModel.getEvents());
     }
 
     public EventListModel<LogEvent> getEventsListModel() {
@@ -129,7 +124,6 @@ public class ViewModel implements ListSelectionListener {
             return;
         }
 
-        crackedFields.clear();
         if (!rawMessagesSelectionModel.isSelectionEmpty()) {
             EventList<LogMessage> selectedMessage = rawMessagesSelectionModel.
                     getSelected();
@@ -159,7 +153,7 @@ public class ViewModel implements ListSelectionListener {
                     logMessageErrors += "\n    " + message;
                 }
 
-                Logger.global.info(logMessageErrors);
+                Logger.getAnonymousLogger().info(logMessageErrors);
 
                 // we are done with the messages
                 list.clear();
@@ -186,10 +180,6 @@ public class ViewModel implements ListSelectionListener {
         rawMessagesSelectionModel = new EventSelectionModel<LogMessage>(adminMessages);
         rawMessagesSelectionModel.addListSelectionListener(this);
         rawMessagesTableCellRenderer = new RawMessageTableCellRenderer();
-    }
-
-    private void createEvents(List<LogEvent> events) {
-        eventsListModel = new EventListModel<LogEvent>((EventList<LogEvent>) events);
     }
 
     public ActionListener getSortByMessageIndexActionListener() {

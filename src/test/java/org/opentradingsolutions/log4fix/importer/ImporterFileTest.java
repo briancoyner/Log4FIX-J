@@ -83,8 +83,6 @@ public class ImporterFileTest extends AbstractSessionTestCase {
     }
 
     public void testLogFile() throws Exception {
-        System.out.println("ImporterTest.testLogFile: " + logFileName);
-
         InputStream is = getLogFileInputStream(logFileName);
 
 
@@ -232,23 +230,22 @@ public class ImporterFileTest extends AbstractSessionTestCase {
         assertEquals(isValid, logMessage.isValid());
 
         if (!isValid) {
-            assertNull("A valid message should not have any validation error messages.",
-                    logMessage.getValidationErrorMessages());
+            assertNull("A valid message should not have any validation error messages.", logMessage.getValidationErrorMessages());
         }
     }
 
-    private void assertDirection(String expectedDirection, LogMessage logMessage)
-            throws Exception {
+    private void assertDirection(String expectedDirection, LogMessage logMessage) throws Exception {
         if (ImporterFileTest.EXPECTED_DIRECTION_INCOMING_VALUE.equals(expectedDirection)) {
+
             assertFalse(logMessage.isIncoming());
         } else if (ImporterFileTest.EXPECTED_DIRECTION_OUTGOING_VALUE.equals(expectedDirection)) {
+
             assertTrue(logMessage.isIncoming());
         } else if (ImporterFileTest.EXPECTED_DIRECTION_BOTH_VALUE.equals(expectedDirection)) {
 
             String rawMessage = logMessage.getRawMessage();
             char delimeter = LogMessage.DEFAULT_DELIMETER;
-            String actualSenderCompId = FIXMessageHelper.getSenderCompId(rawMessage,
-                    delimeter);
+            String actualSenderCompId = FIXMessageHelper.getSenderCompId(rawMessage, delimeter);
 
             if (expectedTargetCompId.equals(actualSenderCompId)) {
                 assertTrue(logMessage.isIncoming());

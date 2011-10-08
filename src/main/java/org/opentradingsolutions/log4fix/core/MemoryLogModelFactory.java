@@ -45,15 +45,18 @@ import java.util.Map;
  * @author Brian M. Coyner
  */
 public class MemoryLogModelFactory {
+
+    private MemoryLogModelFactory() {
+    }
+
     public static Map<SessionID, MemoryLogModel> getMemoryLogModels(SessionSettings settings) {
 
-        Map<SessionID, MemoryLogModel> memoryLogModelsBySessionId =
-                new LinkedHashMap<SessionID, MemoryLogModel>();
+        Map<SessionID, MemoryLogModel> memoryLogModelsBySessionId = new LinkedHashMap<SessionID, MemoryLogModel>();
         Iterator iterator = settings.sectionIterator();
         while (iterator.hasNext()) {
+
             SessionID sessionId = (SessionID) iterator.next();
-            memoryLogModelsBySessionId.put(sessionId, new GlazedListsMemoryLogModel(
-                    sessionId));
+            memoryLogModelsBySessionId.put(sessionId, new GlazedListsMemoryLogModel(sessionId));
         }
         return memoryLogModelsBySessionId;
     }

@@ -54,15 +54,17 @@ public class LogMessage implements Comparable {
     public static final String SENDING_TIME = "sendingTime";
     public static final String RAW_MESSAGE = "rawMessage";
 
-    private SessionID sessionId;
-    private boolean incoming;
-    private String rawMessage;
-    private String messageTypeName;
-    private Date sendingTime;
-    private DataDictionary dictionary;
+    private final int messageIndex;
+    private final SessionID sessionId;
+    private final boolean incoming;
+    private final String rawMessage;
+    private final String messageTypeName;
+    private final Date sendingTime;
+    private final DataDictionary dictionary;
+
     private List<ValidationError> validationErrors;
     private boolean isValid;
-    private int messageIndex;
+
 
     public LogMessage(int messageIndex, boolean incoming, SessionID sessionId, String rawMessage, DataDictionary dictionary) {
         this.messageIndex = messageIndex;
@@ -176,8 +178,7 @@ public class LogMessage implements Comparable {
     public int compareTo(Object o) {
         LogMessage rhs = (LogMessage) o;
         int rhsMessageIndex = rhs.messageIndex;
-        return (messageIndex < rhsMessageIndex ? -1 :
-                (messageIndex == rhsMessageIndex ? 0 : 1));
+        return (messageIndex < rhsMessageIndex ? -1 : (messageIndex == rhsMessageIndex ? 0 : 1));
     }
 
 
@@ -192,13 +193,13 @@ public class LogMessage implements Comparable {
 
         LogField logField = LogField.createLogField(messageType, field, dictionary);
 
-        final DataDictionary.GroupInfo groupInfo = dictionary.getGroup(
-                messageTypeValue, field.getTag());
+        final DataDictionary.GroupInfo groupInfo = dictionary.getGroup(messageTypeValue, field.getTag());
         if (groupInfo != null) {
 
             int delimeterField = groupInfo.getDelimeterField();
             Group group = new Group(field.getTag(), delimeterField);
             int numberOfGroups = Integer.valueOf((String) field.getObject());
+
             for (int index = 0; index < numberOfGroups; index++) {
                 LogGroup logGroup = new LogGroup(messageType, field, dictionary);
 
@@ -209,8 +210,7 @@ public class LogMessage implements Comparable {
                     Iterator groupIterator = group.iterator();
                     while (groupIterator.hasNext()) {
                         Field groupField = (Field) groupIterator.next();
-                        logGroup.addField(LogField.createLogField(messageType,
-                                groupField, dictionary));
+                        logGroup.addField(LogField.createLogField(messageType, groupField, dictionary));
 
                     }
                 } catch (FieldNotFound fieldNotFound) {
@@ -235,8 +235,7 @@ public class LogMessage implements Comparable {
             try {
                 return new Message(sohMessage, dictionary, false);
             } catch (InvalidMessage ugh) {
-                addValidationError(new ValidationError(
-                        "Failed to parse message without validation. " + ugh.getMessage()));
+                addValidationError(new ValidationError("Failed to parse message without validation. " + ugh.getMessage()));
                 return null;
             }
         }
@@ -280,8 +279,8 @@ public class LogMessage implements Comparable {
     }
 
     private String lookupMessageTypeName() {
-        String messageTypeValue = FIXMessageHelper.getMessageType(rawMessage,
-                DEFAULT_DELIMETER);
+        String messageTypeValue = FIXMessageHelper.getMessageType(rawMessage, DEFAULT_DELIMETER);
+
         if (messageTypeValue == null) {
             isValid = false;
             return null;

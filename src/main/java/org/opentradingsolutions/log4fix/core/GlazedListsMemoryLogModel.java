@@ -54,19 +54,19 @@ import java.util.concurrent.Executor;
  */
 public class GlazedListsMemoryLogModel implements MemoryLogModel {
 
+
+    private final FilterList<LogMessage> messages;
+    private final EventList<LogEvent> events;
+    private final PropertyChangeSupport support;
+    private final ThreadSafeList<LogMessage> underlying;
     private SessionID sessionId;
-    private FilterList<LogMessage> messages;
-    private EventList<LogEvent> events;
-    private PropertyChangeSupport support;
-    private ThreadSafeList<LogMessage> underlying;
 
     public GlazedListsMemoryLogModel() {
         this(null);
     }
 
     public GlazedListsMemoryLogModel(SessionID sessionId) {
-        underlying = new ThreadSafeList<LogMessage>(
-                new BasicEventList<LogMessage>());
+        underlying = new ThreadSafeList<LogMessage>(new BasicEventList<LogMessage>());
         messages = new FilterList<LogMessage>(underlying);
         events = new ThreadSafeList<LogEvent>(new BasicEventList<LogEvent>());
         this.sessionId = sessionId;

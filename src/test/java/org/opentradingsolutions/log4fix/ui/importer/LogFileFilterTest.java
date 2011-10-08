@@ -55,33 +55,27 @@ public class LogFileFilterTest extends TestCase {
     }
 
     public void testExistingDirectoryIsAccepted() {
-        assertTrue("An existing directory should be accepted.",
-                filter.accept(MockFile.createExistingDirectory()));
+        assertTrue("An existing directory should be accepted.", filter.accept(MockFile.createExistingDirectory()));
     }
 
     public void testNonExistingFileIsNotAccepted() {
-        assertFalse("An non-existent file should not be accepted.",
-                filter.accept(MockFile.createMissingFile("junk.log")));
+        assertFalse("An non-existent file should not be accepted.", filter.accept(MockFile.createMissingFile("junk.log")));
     }
 
     public void testDotLogFile() {
-        assertTrue("*.log file should be accepted.",
-                filter.accept(MockFile.createExistingFile("today.log")));
+        assertTrue("*.log file should be accepted.", filter.accept(MockFile.createExistingFile("today.log")));
     }
 
     public void testDotInFile() {
-        assertTrue("*.in file should be accepted.",
-                filter.accept(MockFile.createExistingFile("today.in")));
+        assertTrue("*.in file should be accepted.", filter.accept(MockFile.createExistingFile("today.in")));
     }
 
     public void testDotOutFile() {
-        assertTrue("*.out file should be accepted.",
-                filter.accept(MockFile.createExistingFile("today.out")));
+        assertTrue("*.out file should be accepted.", filter.accept(MockFile.createExistingFile("today.out")));
     }
 
     public void testDotTextFile() {
-        assertFalse("*.txt file should not be accepted.",
-                filter.accept(MockFile.createExistingFile("today.txt")));
+        assertFalse("*.txt file should not be accepted.", filter.accept(MockFile.createExistingFile("today.txt")));
     }
 
     // @todo - make the LogFileFilter retrieve valid extensions from an ImporterModel

@@ -73,12 +73,9 @@ public class ViewModelHideHeartbeatMessagesTest extends AbstractSessionTestCase 
     public void testHideHeartbeatsWhenThereAreNoHeartbeatMessages() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
 
         for (LogMessage message : messages) {
             memoryLogModel.addLogMessage(message);
@@ -93,12 +90,9 @@ public class ViewModelHideHeartbeatMessagesTest extends AbstractSessionTestCase 
     public void testHideOneHeartbeatMessage() {
 
         List<LogMessage> noHeartbeats = new ArrayList<LogMessage>();
-        noHeartbeats.add(new LogMessage(0, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        noHeartbeats.add(new LogMessage(1, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        noHeartbeats.add(new LogMessage(2, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
+        noHeartbeats.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        noHeartbeats.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        noHeartbeats.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
 
         for (LogMessage message : noHeartbeats) {
             memoryLogModel.addLogMessage(message);
@@ -106,8 +100,7 @@ public class ViewModelHideHeartbeatMessagesTest extends AbstractSessionTestCase 
 
         // now create the heartbeats
         List<LogMessage> heartbeats = new ArrayList<LogMessage>();
-        heartbeats.add(new LogMessage(3, true, getSessionId(),
-                testHelper.createHeartbeatMessage().toString(), getDictionary()));
+        heartbeats.add(new LogMessage(3, true, getSessionId(), testHelper.createHeartbeatMessage().toString(), getDictionary()));
 
         for (LogMessage message : heartbeats) {
             memoryLogModel.addLogMessage(message);

@@ -45,10 +45,11 @@ import quickfix.SessionID;
 public class ImporterMemoryLog extends AbstractMemoryLog {
 
     private SessionID sessionId;
-    private MemoryLogModel model;
+    private final MemoryLogModel model;
 
     public ImporterMemoryLog(MemoryLogModel model, DataDictionaryLoader dictionaryLoader) {
         super(dictionaryLoader);
+
         this.model = model;
     }
 

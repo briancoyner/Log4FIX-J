@@ -40,8 +40,7 @@ import org.opentradingsolutions.log4fix.core.LogMessage;
 import java.util.List;
 
 /**
- * Allows the user to remove heartbeat messages based on the QuickFIX/J message type
- * name ('Heartbeat').
+ * Allows the user to remove heartbeat messages based on the QuickFIX/J message type name ('Heartbeat').
  *
  * @author Brian M. Coyner
  */

@@ -49,8 +49,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public abstract class AbstractMemoryLog implements Log {
 
-    private DataDictionaryLoader dictionaryLoader;
-    private AtomicInteger index;
+    private final DataDictionaryLoader dictionaryLoader;
+    private final AtomicInteger index;
 
     public AbstractMemoryLog(DataDictionaryLoader dictionaryLoader) {
         this.dictionaryLoader = dictionaryLoader;

@@ -56,8 +56,7 @@ public class FieldHighlighter extends Highlighter {
 
     protected Color computeBackground(Component renderer, ComponentAdapter adapter) {
         JXTreeTable table = (JXTreeTable) adapter.getComponent();
-        FieldTreeNode node = (FieldTreeNode) table.getPathForRow(adapter.row).
-                getLastPathComponent();
+        FieldTreeNode node = (FieldTreeNode) table.getPathForRow(adapter.row).getLastPathComponent();
 
         LogField field = node.getField();
 

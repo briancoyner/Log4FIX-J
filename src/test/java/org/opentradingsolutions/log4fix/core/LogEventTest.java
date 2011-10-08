@@ -41,7 +41,7 @@ import junit.framework.TestCase;
  */
 public class LogEventTest extends TestCase {
 
-    public void nullValueNull() {
+    public void testNullValueNull() {
         LogEvent event = new LogEvent(null);
         assertEquals(LogEvent.NULL_EVENT_MESSAGE, event.getEvent());
     }

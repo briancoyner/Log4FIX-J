@@ -48,7 +48,7 @@ import java.util.Map;
  */
 public class ClassPathDataDictionaryLoader implements DataDictionaryLoader {
 
-    private Map<String, DataDictionary> dictionaryCache;
+    private final Map<String, DataDictionary> dictionaryCache;
 
     public ClassPathDataDictionaryLoader() {
         dictionaryCache = new HashMap<String, DataDictionary>(5);
@@ -70,17 +70,15 @@ public class ClassPathDataDictionaryLoader implements DataDictionaryLoader {
                 || FixVersions.BEGINSTRING_FIX44.equals(beginString)
                 || FixVersions.BEGINSTRING_FIXT11.equals(beginString))) {
 
-            throw new IllegalArgumentException("Invalid FIX BeginString: '" +
-                    sessionId + "'.");
+            throw new IllegalArgumentException("Invalid FIX BeginString: '" + sessionId + "'.");
         }
 
         String dictionaryFileName = beginString.replaceAll("\\.", "") + ".xml";
+
         // the dictionary is loaded from the QuickFIX JAR file.
-        InputStream ddis = Thread.currentThread().getContextClassLoader().
-                getResourceAsStream(dictionaryFileName);
+        InputStream ddis = Thread.currentThread().getContextClassLoader().getResourceAsStream(dictionaryFileName);
         if (ddis == null) {
-            throw new NullPointerException("Data Dictionary file '" +
-                    dictionaryFileName + "' not found at root of CLASSPATH.");
+            throw new NullPointerException("Data Dictionary file '" + dictionaryFileName + "' not found at root of CLASSPATH.");
         }
 
         try {
@@ -88,8 +86,7 @@ public class ClassPathDataDictionaryLoader implements DataDictionaryLoader {
             dictionaryCache.put(beginString, dictionary);
             return dictionary;
         } catch (ConfigError configError) {
-            throw new RuntimeException("Error loading data dictionary file.",
-                    configError);
+            throw new RuntimeException("Error loading data dictionary file.", configError);
         }
     }
 }

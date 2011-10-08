@@ -55,6 +55,7 @@ import java.util.concurrent.TimeUnit;
 public class LogMessageParser implements Runnable {
 
     public static final String POISON_PILL = "DONE";
+    public static final String SOH_STRING = "\u0001";
 
     /**
      * The amount of time (ms) to wait while trying to add the poison pill to the
@@ -64,7 +65,7 @@ public class LogMessageParser implements Runnable {
 
     private final InputStream inputStream;
     private final BlockingQueue<String> fixMessages;
-    public static final String SOH_STRING = "\u0001";
+
 
     /**
      * The parser takes ownership of the input stream once the {@link #run()} method

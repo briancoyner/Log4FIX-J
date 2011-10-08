@@ -75,12 +75,9 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testNoSortMaintainsOriginalOrder() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
 
         for (LogMessage message : messages) {
             memoryLogModel.addLogMessage(message);
@@ -93,12 +90,9 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testReverseTheMessageOrder() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
 
         for (LogMessage message : messages) {
             memoryLogModel.addLogMessage(message);
@@ -120,12 +114,9 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testFlipBeforeAdding() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
 
         // flip the messages on the view before adding messages
         checkBox.doClick();
@@ -147,12 +138,9 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testFlipFlop() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
 
         int index;
         for (index = 0; index < messages.size(); index++) {
@@ -163,10 +151,8 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
         checkBox.doClick();
         waitForSwing();
 
-        messages.add(new LogMessage(3, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(4, true, getSessionId(),
-                testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(3, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(4, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
 
         for (index = index; index < messages.size(); index++) {
             memoryLogModel.addLogMessage(messages.get(index));

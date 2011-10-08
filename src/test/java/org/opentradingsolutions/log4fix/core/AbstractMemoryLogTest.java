@@ -121,7 +121,6 @@ public class AbstractMemoryLogTest extends AbstractSessionTestCase {
     // @todo - add more tests.
 
     private Message createMessage() {
-        return new Logon(new EncryptMethod(EncryptMethod.NONE_OTHER),
-                new HeartBtInt(30000));
+        return new Logon(new EncryptMethod(EncryptMethod.NONE_OTHER), new HeartBtInt(30000));
     }
 }

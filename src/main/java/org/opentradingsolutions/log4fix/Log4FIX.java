@@ -101,8 +101,7 @@ public class Log4FIX {
      * @see #show()
      */
     public static Log4FIX createForLiveUpdates(SessionSettings sessionSettings) {
-        return createForLiveUpdates(MemoryLogModelFactory.
-                getMemoryLogModels(sessionSettings));
+        return createForLiveUpdates(MemoryLogModelFactory.getMemoryLogModels(sessionSettings));
     }
 
     /**
@@ -115,17 +114,14 @@ public class Log4FIX {
      * @see #getLogFactory()
      * @see #show()
      */
-    public static Log4FIX createForLiveUpdates(Map<SessionID, MemoryLogModel>
-            memoryLogModelsBySessionId) {
+    public static Log4FIX createForLiveUpdates(Map<SessionID, MemoryLogModel> memoryLogModelsBySessionId) {
 
         Log4FIX log4FIX = new Log4FIX();
-        log4FIX.logFactory = new MemoryLogFactory(memoryLogModelsBySessionId,
-                new SessionDataDictionaryLoader());
+        log4FIX.logFactory = new MemoryLogFactory(memoryLogModelsBySessionId, new SessionDataDictionaryLoader());
 
         ViewBuilder viewBuilder = new ViewBuilder();
 
-        final Iterator<MemoryLogModel> memoryLogModels = memoryLogModelsBySessionId.
-                values().iterator();
+        final Iterator<MemoryLogModel> memoryLogModels = memoryLogModelsBySessionId.values().iterator();
 
         log4FIX.frame = new JFrame("Log4FIX");
         log4FIX.frame.add(viewBuilder.createView(memoryLogModels), BorderLayout.CENTER);
@@ -138,8 +134,7 @@ public class Log4FIX {
      * Factory method that creates a Log4FIX instance for displaying imported
      * FIX messages.
      */
-    public static Log4FIX createForImport(final MemoryLogModel memoryLogModel,
-                                          ImporterController controller) {
+    public static Log4FIX createForImport(final MemoryLogModel memoryLogModel, ImporterController controller) {
         ViewBuilder viewBuilder = new ViewBuilder();
 
         Log4FIX log4FIX = new Log4FIX();

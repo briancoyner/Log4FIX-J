@@ -48,34 +48,32 @@ import java.util.Map;
  * @author Brian M. Coyner
  */
 public class MemoryLogFactory implements LogFactory {
-    private DataDictionaryLoader dictionaryLoader;
-    private Map<SessionID, MemoryLogModel> memoryLogModels;
 
+    private final DataDictionaryLoader dictionaryLoader;
+    private final Map<SessionID, MemoryLogModel> memoryLogModels;
 
     /**
-     * @param memoryLogModels  a collection of {@link org.opentradingsolutions.log4fix.core.MemoryLogModel}s mapped using
-     *                         a <code>SessionID</code>. There is one <code>MemoryLogModel</code> for each
+     * @param memoryLogModels a collection of {@link org.opentradingsolutions.log4fix.core.MemoryLogModel}s mapped using
+     * a <code>SessionID</code>. There is one <code>MemoryLogModel</code> for each session ID.
      * @param dictionaryLoader
      */
-    public MemoryLogFactory(Map<SessionID, MemoryLogModel> memoryLogModels,
-                            DataDictionaryLoader dictionaryLoader) {
+    public MemoryLogFactory(Map<SessionID, MemoryLogModel> memoryLogModels, DataDictionaryLoader dictionaryLoader) {
 
         this.memoryLogModels = memoryLogModels;
         this.dictionaryLoader = dictionaryLoader;
     }
 
     /**
-     * @throws UnsupportedOperationException because this method should not be used
-     *                                       because it is deprecated in QFJ 1.4
+     * @throws UnsupportedOperationException because this method should not be used because it is deprecated in QFJ 1.4.
      */
     public Log create() {
         throw new UnsupportedOperationException("Use the 'create(SessionID)' method.");
     }
 
     /**
-     * @return a new {@link LiveMemoryLog}
-     * @throws RuntimeException if the given <code>SessionID</code> is not found
-     *                          in the collection of <code>MemoryLogModel</code> passed to the constructor.
+     * @return a new {@link LiveMemoryLog}.
+     * @throws RuntimeException if the given <code>SessionID</code> is not found in the collection of
+     * <code>MemoryLogModel</code> passed to the constructor.
      */
     public Log create(SessionID sessionId) {
 

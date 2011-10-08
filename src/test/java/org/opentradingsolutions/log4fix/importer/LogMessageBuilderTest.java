@@ -53,15 +53,7 @@ public class LogMessageBuilderTest extends TestCase {
     private BlockingQueue<String> queue;
     private Thread thread;
     private ImporterModel model;
-
-
-    public LogMessageBuilderTest() {
-    }
-
-    public LogMessageBuilderTest(String string) {
-        super(string);
-    }
-
+    
     @Override
     protected void setUp() {
         model = createModel();
@@ -128,8 +120,7 @@ public class LogMessageBuilderTest extends TestCase {
         DataDictionaryLoader dataDictionaryLoader = new SessionDataDictionaryLoader();
         SessionIdResolver sessionIdResolver = new PassThroughSessionIdResolver();
         MemoryLogModel memoryLogModel = new MockMemoryLogModel();
-        ImporterMemoryLog memoryLog = new ImporterMemoryLog(memoryLogModel,
-                dataDictionaryLoader);
+        ImporterMemoryLog memoryLog = new ImporterMemoryLog(memoryLogModel, dataDictionaryLoader);
         return new ImporterModel(memoryLog, sessionIdResolver);
     }
 }

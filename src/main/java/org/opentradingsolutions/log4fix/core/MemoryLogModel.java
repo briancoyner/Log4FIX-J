@@ -49,8 +49,7 @@ import java.util.List;
 public interface MemoryLogModel {
 
     /**
-     * @return the session Id corresponding to the FIX messages. May return
-     *         <code>null</code>.
+     * @return the session Id corresponding to the FIX messages. May return <code>null</code>.
      */
     SessionID getSessionId();
 

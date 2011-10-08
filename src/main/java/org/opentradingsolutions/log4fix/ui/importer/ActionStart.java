@@ -50,11 +50,12 @@ import java.util.concurrent.Executor;
  */
 public class ActionStart extends AbstractAction {
 
-    private Importer importer;
-    private ImporterModel model;
-    private ImporterCallback callback;
+    private final Importer importer;
+    private final ImporterModel model;
+    private final ImporterCallback callback;
+    private final Executor executor;
+
     private JFileChooser fileChooser;
-    private Executor executor;
 
     public ActionStart(Importer importer, ImporterModel model, ImporterCallback callback) {
         super("Import");

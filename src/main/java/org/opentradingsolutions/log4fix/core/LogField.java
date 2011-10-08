@@ -53,16 +53,15 @@ import java.util.List;
  */
 public class LogField {
 
-    private Field field;
-    private FieldType fieldType;
-    private String fieldName;
-    private String fieldValueName;
-    private boolean required;
-    private boolean header;
-    private boolean trailer;
+    private final DataDictionary dictionary;
+    private final Field field;
+    private final FieldType fieldType;
+    private final String fieldName;
+    private final String fieldValueName;
+    private final boolean required;
+    private final boolean header;
+    private final boolean trailer;
     private List<LogGroup> groups;
-
-    private DataDictionary dictionary;
 
     public static LogField createLogField(MsgType messageType, Field field,
                                           DataDictionary dictionary) {
@@ -83,14 +82,11 @@ public class LogField {
 
         fieldType = dictionary.getFieldTypeEnum(fieldTag);
         fieldName = dictionary.getFieldName(fieldTag);
-        fieldValueName = dictionary.getValueName(fieldTag,
-                field.getObject().toString());
-        required = getDataDictionary().isRequiredField(messageTypeString,
-                fieldTag);
+        fieldValueName = dictionary.getValueName(fieldTag, field.getObject().toString());
+        required = getDataDictionary().isRequiredField(messageTypeString, fieldTag);
+
         header = getDataDictionary().isHeaderField(fieldTag);
-        if (!header) {
-            trailer = getDataDictionary().isTrailerField(fieldTag);
-        }
+        trailer = !header && getDataDictionary().isTrailerField(fieldTag);
     }
 
     public Iterator<LogField> group() {

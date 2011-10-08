@@ -39,17 +39,17 @@ package org.opentradingsolutions.log4fix.importer;
  */
 public class ImporterModel {
 
+    private final SessionIdResolver sessionIdResolver;
+    private final ImporterMemoryLog importMemoryLog;
+
     private String lastAccessedFilePath;
-    private SessionIdResolver sessionIdResolver;
-    private ImporterMemoryLog importMemoryLog;
 
     public ImporterModel(ImporterMemoryLog logger, SessionIdResolver sessionIdResolver) {
         this.importMemoryLog = logger;
         this.sessionIdResolver = sessionIdResolver;
     }
 
-    public ImporterModel(ImporterMemoryLog importerMemoryLog,
-                         SessionIdResolver sessionIdResolver, String initialFilePath) {
+    public ImporterModel(ImporterMemoryLog importerMemoryLog, SessionIdResolver sessionIdResolver, String initialFilePath) {
 
         this.importMemoryLog = importerMemoryLog;
         this.sessionIdResolver = sessionIdResolver;

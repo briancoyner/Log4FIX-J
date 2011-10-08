@@ -65,11 +65,9 @@ public class ViewBuilder {
     public static final String NO_SESSION_ID = "No Session Id";
 
     /**
-     * Creates a tab pane containing one or more tabs. The behavior is to
-     * show each configured <tt>quickfix.Session</tt> in its own tab.
+     * Creates a tab pane containing one or more tabs. The behavior is to show each configured <tt>quickfix.Session</tt> in its own tab.
      *
-     * @param memoryLogModels an iterator containing <tt>MemoryLogModel</tt>s
-     *                        for each configured <tt>Session</tt>.
+     * @param memoryLogModels an iterator containing <tt>MemoryLogModel</tt>s for each configured <tt>Session</tt>.
      * @return a component ready to show QuickFIX logs.
      */
     public JComponent createView(Iterator<MemoryLogModel> memoryLogModels) {
@@ -78,8 +76,7 @@ public class ViewBuilder {
 
         while (memoryLogModels.hasNext()) {
             MemoryLogModel memoryLogModel = memoryLogModels.next();
-            tabPane.addTab(getTabTitle(memoryLogModel),
-                    createTabForSession(memoryLogModel));
+            tabPane.addTab(getTabTitle(memoryLogModel), createTabForSession(memoryLogModel));
         }
 
         return tabPane;
@@ -87,8 +84,7 @@ public class ViewBuilder {
 
     public JComponent createView(MemoryLogModel memoryLogModel) {
         final JTabbedPane tabPane = new JTabbedPane();
-        tabPane.addTab(getTabTitle(memoryLogModel),
-                createTabForSession(memoryLogModel));
+        tabPane.addTab(getTabTitle(memoryLogModel), createTabForSession(memoryLogModel));
 
         memoryLogModel.addPropertyChangeListener(new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent evt) {
@@ -123,8 +119,7 @@ public class ViewBuilder {
         JSplitPane messageAndEventView = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
         messageAndEventView.setResizeWeight(.66);
         messageAndEventView.setLeftComponent(messageView);
-        messageAndEventView.setRightComponent(new JScrollPane(
-                createEventMessageTable(viewModel)));
+        messageAndEventView.setRightComponent(new JScrollPane(createEventMessageTable(viewModel)));
         messageAndEventView.setBorder(null);
 
         JPanel mainView = new JPanel(new BorderLayout());
@@ -135,14 +130,11 @@ public class ViewBuilder {
         // builder.
         JTextField filterField = new MessageSearchField();
 
-        FilterList<LogMessage> messages = ((GlazedListsMemoryLogModel) memoryLogModel).
-                getMessages();
+        FilterList<LogMessage> messages = ((GlazedListsMemoryLogModel) memoryLogModel).getMessages();
 
         EventList matchers = new BasicEventList();
 
-        TextComponentMatcherEditor<LogMessage> liveSearchMatcherEditor =
-                new TextComponentMatcherEditor<LogMessage>(filterField,
-                        new MessageFilterator());
+        TextComponentMatcherEditor<LogMessage> liveSearchMatcherEditor = new TextComponentMatcherEditor<LogMessage>(filterField, new MessageFilterator());
         matchers.add(liveSearchMatcherEditor);
         MatcherEditor matcherEditor = new CompositeMatcherEditor(matchers);
         messages.setMatcherEditor(matcherEditor);

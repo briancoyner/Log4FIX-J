@@ -47,6 +47,7 @@ import java.lang.reflect.Field;
 public class ClassPathDataDictionaryLoaderTest extends TestCase {
     public static final String SENDER_COMP_ID = "coyner";
     public static final String TARGET_COMP_ID = "bce";
+
     private DataDictionaryLoader loader;
 
     protected void setUp() throws Exception {

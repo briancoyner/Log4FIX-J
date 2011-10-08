@@ -48,23 +48,20 @@ import java.text.SimpleDateFormat;
  */
 public class RawMessageTableCellRenderer extends DefaultTableCellRenderer {
 
-    private Color incomingColor = new Color(131, 218, 102);
-    private Color outgoingColor = new Color(233, 173, 89);
-
-    private SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
     public static final String RECEIVING = "Receiving";
     public static final String SENDING = "Sending";
+    
+    private Color incomingColor = new Color(131, 218, 102);
+    private Color outgoingColor = new Color(233, 173, 89);
+    private SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-                                                   boolean isSelected, boolean hasFocus, int row, int column) {
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 
-        Component comp = super.getTableCellRendererComponent(table, value,
-                isSelected, hasFocus, row, column);
+        Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
         //noinspection unchecked
-        EventTableModel<LogMessage> tableModel = (EventTableModel<LogMessage>)
-                table.getModel();
+        EventTableModel<LogMessage> tableModel = (EventTableModel<LogMessage>) table.getModel();
         LogMessage message = tableModel.getElementAt(row);
 
         if (table.convertColumnIndexToModel(column) == 2) {

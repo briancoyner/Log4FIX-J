@@ -45,9 +45,9 @@ public class LiveMemoryLog extends AbstractMemoryLog {
     private SessionID sessionId;
     private MemoryLogModel model;
 
-    public LiveMemoryLog(MemoryLogModel model, SessionID sessionId,
-                         DataDictionaryLoader dictionaryLoader) {
+    public LiveMemoryLog(MemoryLogModel model, SessionID sessionId, DataDictionaryLoader dictionaryLoader) {
         super(dictionaryLoader);
+
         this.model = model;
         this.sessionId = sessionId;
     }

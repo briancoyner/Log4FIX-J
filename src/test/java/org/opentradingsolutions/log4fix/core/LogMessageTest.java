@@ -59,8 +59,7 @@ public class LogMessageTest extends AbstractSessionTestCase {
         Message message = testHelper.createValidMessage(sendingTime);
 
         String invalidRawMessage = testHelper.removeField(MsgType.FIELD, message.toString());
-        LogMessage logMessage = new LogMessage(1, true, getSessionId(), invalidRawMessage,
-                getDictionary());
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(), invalidRawMessage, getDictionary());
 
         assertNull(logMessage.getMessageTypeName());
         assertFalse(logMessage.isValid());
@@ -69,8 +68,7 @@ public class LogMessageTest extends AbstractSessionTestCase {
 
     public void testMessageWithoutSendingTimeIsAnInvalidMessage() {
         Message message = testHelper.createValidMessage(null);
-        LogMessage logMessage = new LogMessage(1, true, getSessionId(),
-                message.toString(), getDictionary());
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(), message.toString(), getDictionary());
 
         assertNull(logMessage.getSendingTime());
         assertFalse("A message without a sending time should not be valid.",
@@ -83,30 +81,23 @@ public class LogMessageTest extends AbstractSessionTestCase {
     public void testValidMessage() throws FieldNotFound {
 
         Message message = testHelper.createValidMessage(sendingTime);
-        LogMessage logMessage = new LogMessage(1, true, getSessionId(),
-                message.toString(), getDictionary());
+        LogMessage logMessage = new LogMessage(1, true, getSessionId(), message.toString(), getDictionary());
         assertValidLogMessage(message, logMessage);
     }
 
-    private void assertValidLogMessage(Message message,
-                                       LogMessage logMessage) throws FieldNotFound {
+    private void assertValidLogMessage(Message message, LogMessage logMessage) throws FieldNotFound {
         assertLogMessage(message, true, logMessage);
 
     }
 
-    private void assertLogMessage(Message message, boolean isValidMessage,
-                                  LogMessage logMessage) throws FieldNotFound {
+    private void assertLogMessage(Message message, boolean isValidMessage, LogMessage logMessage) throws FieldNotFound {
 
         assertEquals(isValidMessage, logMessage.isValid());
         assertTrue(logMessage.isIncoming());
         assertSame(getSessionId(), logMessage.getSessionId());
-        assertEquals(message.toString().replace(LogMessage.SOH_DELIMETER,
-                LogMessage.DEFAULT_DELIMETER),
-                logMessage.getRawMessage());
+        assertEquals(message.toString().replace(LogMessage.SOH_DELIMETER, LogMessage.DEFAULT_DELIMETER), logMessage.getRawMessage());
 
-        assertEquals(getDictionary().getValueName(MsgType.FIELD,
-                message.getHeader().getString(MsgType.FIELD)),
-                logMessage.getMessageTypeName());
+        assertEquals(getDictionary().getValueName(MsgType.FIELD, message.getHeader().getString(MsgType.FIELD)), logMessage.getMessageTypeName());
 
         if (isValidMessage) {
             assertNull(logMessage.getValidationErrorMessages());

@@ -50,12 +50,12 @@ import java.util.concurrent.LinkedBlockingQueue;
  * @author Brian M. Coyner
  */
 public class ImporterTest extends TestCase {
+
     private Importer importer;
     private Thread testThread;
     private MockImporterCallback callback;
     private InputStream inputStream;
     private PipedOutputStream outputStream;
-    private BlockingQueue<String> queue;
     private MemoryLogModel logModel;
 
     protected void setUp() throws Exception {
@@ -79,28 +79,9 @@ public class ImporterTest extends TestCase {
 
 
         // bounded buffer.
-        queue = new LinkedBlockingQueue<String>(1);
+        BlockingQueue<String> queue = new LinkedBlockingQueue<String>(1);
         importer = new Importer(queue);
     }
-
-    // @todo - figure out how to properly signal that the input stream closed.
-    // Currently closing the input stream does not signal the blocked "reader", which
-    // the Importer wrapped with a BufferedReader.
-//    public void testClosingInputStreamStopsServiceThreads() throws Exception {
-//
-//        testThread.start();
-//
-//        outputStream.write("This is a test\n".getBytes());
-//
-//        Thread.sleep(500);
-//
-//        inputStream.close();
-//
-//        testThread.join();
-//
-//        assertCallback(1, 1, 0);
-//        outputStream.close();
-//    }
 
     public void testBlockedInputCorrectlyRespondsToCancelingTheImporter()
             throws Exception {
@@ -120,34 +101,11 @@ public class ImporterTest extends TestCase {
         assertCallback(1, 1, 1);
     }
 
-//    public void testBlockedQueueCorrectlyRespondsToCancelingTheImporter()
-//            throws Exception {
-//
-//        testThread.start();
-//
-//        outputStream.write("8=FIX.4.2\u00019=456\u000135=D\u000110=123\u0001".getBytes());
-//
-//        // this causes the bounded queue to block
-//        outputStream.write("8=FIX.4.2\u00019=456\u000135=D\u000110=123\u0001".getBytes());
-//
-//        Thread.sleep(999999);
-//
-//        importer.stop();
-//
-//        testThread.join(1000);
-//
-//        assertEquals(1, logModel.getMessages().size());
-//        assertCallback(1, 1, 1);
-//    }
-
     private void assertCallback(int startingInvokedCounter, int doneInvokedCounter,
                                 int canceledInvokedCounter) {
-        assertEquals("Starting Callback Invoked Count.", startingInvokedCounter,
-                callback.getStartingInvokedCounter());
-        assertEquals("Done Callback Invoked Count.", doneInvokedCounter,
-                callback.getDoneInvokedCounter());
-        assertEquals("Canceling Callback Invoked Count.", canceledInvokedCounter,
-                callback.getCancelingInvokedCounter());
+        assertEquals("Starting Callback Invoked Count.", startingInvokedCounter, callback.getStartingInvokedCounter());
+        assertEquals("Done Callback Invoked Count.", doneInvokedCounter, callback.getDoneInvokedCounter());
+        assertEquals("Canceling Callback Invoked Count.", canceledInvokedCounter, callback.getCancelingInvokedCounter());
     }
 
 }

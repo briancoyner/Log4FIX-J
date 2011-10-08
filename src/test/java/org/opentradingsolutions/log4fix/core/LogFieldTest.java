@@ -63,8 +63,7 @@ public class LogFieldTest extends TestCase {
         assertSame(field, logField.getField());
         assertEquals(dd.getFieldName(field.getTag()), logField.getFieldName());
         assertEquals(dd.getFieldTypeEnum(field.getTag()), logField.getFieldType());
-        assertEquals(dd.getValueName(field.getTag(), field.getObject().toString()),
-                logField.getFieldValueName());
+        assertEquals(dd.getValueName(field.getTag(), field.getObject().toString()), logField.getFieldValueName());
         assertEquals(field.getObject(), logField.getValue());
         assertTrue(logField.isBodyField());
         assertEquals(dd.isHeaderField(field.getTag()), logField.isHeaderField());

@@ -68,8 +68,7 @@ public class FIXMessageHelper {
         return rawMessage.substring(beginIndex, endIndex);
     }
 
-    public static Date getSendingTime(String rawMessage, char delimeter)
-            throws FieldConvertError {
+    public static Date getSendingTime(String rawMessage, char delimeter) throws FieldConvertError {
         int beginIndex = rawMessage.indexOf("52=");
         if (beginIndex == -1) {
             return null;

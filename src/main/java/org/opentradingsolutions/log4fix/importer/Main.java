@@ -52,8 +52,7 @@ public class Main {
      * This is the main entry point when starting Log4FIX in "standalone" mode.
      * Use this starting point to import log files.
      *
-     * @param args may contain a single absolute path to a log file that automatically
-     *             imports.
+     * @param args may contain a single absolute path to a log file that automatically imports.
      * @throws Exception if the application fails to start.
      */
     public static void main(String[] args) throws Exception {
@@ -62,11 +61,9 @@ public class Main {
         SessionIdResolver sessionIdResolver = new PassThroughSessionIdResolver();
 
         MemoryLogModel memoryLogModel = new GlazedListsMemoryLogModel();
-        ImporterMemoryLog importerMemoryLog = new ImporterMemoryLog(memoryLogModel,
-                dictionaryLoader);
+        ImporterMemoryLog importerMemoryLog = new ImporterMemoryLog(memoryLogModel, dictionaryLoader);
         ImporterModel model = new ImporterModel(importerMemoryLog, sessionIdResolver);
-        Importer importer = new Importer();
-        ImporterController controller = new ImporterController(importer, model);
+        ImporterController controller = new ImporterController(new Importer(), model);
 
         Log4FIX forImport = Log4FIX.createForImport(memoryLogModel, controller);
         forImport.show();

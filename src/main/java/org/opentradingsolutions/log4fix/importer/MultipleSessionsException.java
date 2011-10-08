@@ -44,11 +44,11 @@ import quickfix.SessionID;
  * @author Brian M. Coyner
  */
 public class MultipleSessionsException extends InterruptedException {
+
     private final SessionID firstSessionId;
     private final SessionID secondSessionId;
 
-    public MultipleSessionsException(SessionID firstSessionId,
-                                     SessionID secondSessionId) {
+    public MultipleSessionsException(SessionID firstSessionId, SessionID secondSessionId) {
         super("Multiple FIX sessions were found in the log file. Log4FIX does " +
                 "not handle this situation (yet). Here are the sessions:");
         this.firstSessionId = firstSessionId;

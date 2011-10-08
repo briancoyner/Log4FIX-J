@@ -43,9 +43,10 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class Importer {
 
+    private final BlockingQueue<String> queue;
+
     private Thread producer;
     private ImporterCallback callback;
-    private BlockingQueue<String> queue;
 
     public Importer() {
         this(new LinkedBlockingQueue<String>());
@@ -57,7 +58,6 @@ public class Importer {
 
     public void start(ImporterModel model, InputStream is, ImporterCallback callback) {
         this.callback = callback;
-
 
         producer = new Thread(new LogMessageParser(is, queue));
 

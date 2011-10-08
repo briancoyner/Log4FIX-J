@@ -51,8 +51,7 @@ public class ViewBuilderTest extends TestCase {
 
         JTabbedPane view = getView(model);
 
-        assertEquals("Tab Pane Label", ViewBuilder.NO_SESSION_ID,
-                view.getTitleAt(0));
+        assertEquals("Tab Pane Label", ViewBuilder.NO_SESSION_ID, view.getTitleAt(0));
     }
 
     private JTabbedPane getView(MemoryLogModel model) {

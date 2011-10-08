@@ -48,8 +48,7 @@ public class LiveMemoryLogTest extends AbstractSessionTestCase {
     @Override
     public void doSetUp() throws ConfigError {
         logModel = new MockMemoryLogModel(getSessionId());
-        memoryLog = new LiveMemoryLog(logModel, getSessionId(),
-                new ClassPathDataDictionaryLoader());
+        memoryLog = new LiveMemoryLog(logModel, getSessionId(), new ClassPathDataDictionaryLoader());
     }
 
     public void testSessionId() {

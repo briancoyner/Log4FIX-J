@@ -46,17 +46,17 @@ import java.util.concurrent.BlockingQueue;
  */
 public class LogMessageBuilder implements Runnable {
 
-    private final BlockingQueue<String> fixMessages;
-    private ImporterModel model;
-    private SessionID senderSessionId;
     public static final String EVENT_START = "Start";
     public static final String EVENT_ERROR = "ERROR";
     public static final String EVENT_MESSAGES_IMPORTED = "Messages Imported";
     public static final String EVENT_COMPLETE = "Complete";
 
+    private final BlockingQueue<String> fixMessages;
+    private final ImporterModel model;
 
-    public LogMessageBuilder(ImporterModel model,
-                             BlockingQueue<String> fixMessages) {
+    private SessionID senderSessionId;
+
+    public LogMessageBuilder(ImporterModel model, BlockingQueue<String> fixMessages) {
         this.model = model;
         this.fixMessages = fixMessages;
     }
@@ -94,8 +94,7 @@ public class LogMessageBuilder implements Runnable {
                 endIndex = rawMessage.indexOf(LogMessage.SOH_DELIMETER, beginIndex);
                 String targetCompId = rawMessage.substring(beginIndex, endIndex);
 
-                SessionID currentSessionId = new SessionID(beginString, senderCompId,
-                        targetCompId);
+                SessionID currentSessionId = new SessionID(beginString, senderCompId, targetCompId);
 
                 // hopefully the first message we find is the initiator's logon...
                 // @todo - currently it is assumed that the person running this
@@ -149,11 +148,12 @@ public class LogMessageBuilder implements Runnable {
 
         boolean incoming;
         if (senderSessionId.getSenderCompID().equals(currentSessionId.getSenderCompID())
-                && senderSessionId.getTargetCompID()
-                .equals(currentSessionId.getTargetCompID())) {
+                && senderSessionId.getTargetCompID().equals(currentSessionId.getTargetCompID())) {
+
             incoming = false;
         } else if (senderSessionId.getSenderCompID().equals(currentSessionId.getTargetCompID())
                 && senderSessionId.getTargetCompID().equals(currentSessionId.getSenderCompID())) {
+
             incoming = true;
         } else {
             throw new MultipleSessionsException(senderSessionId, currentSessionId);

@@ -46,11 +46,11 @@ import java.util.List;
  */
 public class LogGroup extends LogField {
 
-    private List<LogField> fields;
+    private final List<LogField> fields;
 
-    public LogGroup(MsgType messageType, Field field,
-                    DataDictionary dictionary) {
+    public LogGroup(MsgType messageType, Field field, DataDictionary dictionary) {
         super(messageType, field, dictionary);
+
         fields = new ArrayList<LogField>();
     }
 
