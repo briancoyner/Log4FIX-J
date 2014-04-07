@@ -1,27 +1,22 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
- *
+ * Copyright (c) 2006 - 2011 Brian M. Coyner All rights reserved.
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
+ * notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
+ * notice, this list of conditions and the following disclaimer in
+ * the documentation and/or other materials provided with the
+ * distribution.
  * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
- *    nor the names of its contributors may be used to endorse or promote
- *    products derived from this software without specific prior written permission.
- *
+ * nor the names of its contributors may be used to endorse or promote
+ * products derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
+ * DISCLAIMED. IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -34,12 +29,26 @@
 
 package org.opentradingsolutions.log4fix.core;
 
-import org.opentradingsolutions.log4fix.util.FIXMessageHelper;
-import quickfix.*;
+import quickfix.DataDictionary;
+import quickfix.Field;
+import quickfix.FieldConvertError;
+import quickfix.FieldMap;
+import quickfix.FieldNotFound;
+import quickfix.Group;
+import quickfix.InvalidMessage;
+import quickfix.Message;
+import quickfix.SessionID;
 import quickfix.field.MsgType;
 import quickfix.field.SendingTime;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.opentradingsolutions.log4fix.util.FIXMessageHelper;
 
 /**
  * @author Brian M. Coyner
@@ -65,8 +74,8 @@ public class LogMessage implements Comparable {
     private List<ValidationError> validationErrors;
     private boolean isValid;
 
-
-    public LogMessage(int messageIndex, boolean incoming, SessionID sessionId, String rawMessage, DataDictionary dictionary) {
+    public LogMessage(int messageIndex, boolean incoming, SessionID sessionId, String rawMessage,
+            DataDictionary dictionary) {
         this.messageIndex = messageIndex;
 
         isValid = true;
@@ -153,7 +162,6 @@ public class LogMessage implements Comparable {
      */
     public List<LogField> getLogFields() {
 
-
         Message message = createMessage();
 
         List<LogField> logFields = new ArrayList<LogField>();
@@ -181,42 +189,41 @@ public class LogMessage implements Comparable {
         return (messageIndex < rhsMessageIndex ? -1 : (messageIndex == rhsMessageIndex ? 0 : 1));
     }
 
-
     public String toString() {
         return "" + messageIndex;
     }
 
-    private LogField createLogField(Message message,FieldMap parent, Field field) {
+    private LogField createLogField(Message message, FieldMap parent, Field field) {
 
-    	MsgType messageType = getMessageType(message);
-    	String messageTypeValue = messageType.getValue();
+        MsgType messageType = getMessageType(message);
+        String messageTypeValue = messageType.getValue();
 
-    	LogField logField = LogField.createLogField(messageType, field, dictionary);
+        LogField logField = LogField.createLogField(messageType, field, dictionary);
 
-    	if (parent.hasGroup(field.getTag())) {
+        if (parent.hasGroup(field.getTag())) {
 
-    		List<Group> groups = parent.getGroups(field.getTag());
-    		for (Group group:groups) {
-    			LogGroup logGroup = new LogGroup(messageType, field, dictionary);
+            List<Group> groups = parent.getGroups(field.getTag());
+            for (Group group : groups) {
+                LogGroup logGroup = new LogGroup(messageType, field, dictionary);
 
-    			Iterator groupIterator = group.iterator();
-    			while (groupIterator.hasNext()) {
-    				Field groupField = (Field) groupIterator.next();
-    				if(group.hasGroup(groupField.getTag())) {
-    					logGroup.addField(createLogField(message, group, groupField));
-    				}
-    				else {
-    					logGroup.addField(LogField.createLogField(messageType,
-    							groupField, dictionary));
-    				}
+                Iterator groupIterator = group.iterator();
+                while (groupIterator.hasNext()) {
+                    Field groupField = (Field) groupIterator.next();
+                    if (group.hasGroup(groupField.getTag())) {
+                        logGroup.addField(createLogField(message, group, groupField));
+                    }
+                    else {
+                        logGroup.addField(LogField.createLogField(messageType,
+                                groupField, dictionary));
+                    }
 
-    			}
+                }
 
-    			logField.addGroup(logGroup);
-    		}
-    	}
+                logField.addGroup(logGroup);
+            }
+        }
 
-    	return logField;
+        return logField;
     }
 
     private Message createMessage() {
@@ -230,7 +237,8 @@ public class LogMessage implements Comparable {
             try {
                 return new Message(sohMessage, dictionary, false);
             } catch (InvalidMessage ugh) {
-                addValidationError(new ValidationError("Failed to parse message without validation. " + ugh.getMessage()));
+                addValidationError(new ValidationError("Failed to parse message without validation. "
+                        + ugh.getMessage()));
                 return null;
             }
         }

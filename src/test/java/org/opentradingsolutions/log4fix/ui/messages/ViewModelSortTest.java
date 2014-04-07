@@ -1,27 +1,22 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
- *
+ * Copyright (c) 2006 - 2011 Brian M. Coyner All rights reserved.
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
+ * notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
+ * notice, this list of conditions and the following disclaimer in
+ * the documentation and/or other materials provided with the
+ * distribution.
  * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
- *    nor the names of its contributors may be used to endorse or promote
- *    products derived from this software without specific prior written permission.
- *
+ * nor the names of its contributors may be used to endorse or promote
+ * products derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
+ * DISCLAIMED. IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -34,16 +29,18 @@
 
 package org.opentradingsolutions.log4fix.ui.messages;
 
-import org.opentradingsolutions.log4fix.core.AbstractSessionTestCase;
-import org.opentradingsolutions.log4fix.core.LogMessage;
-import org.opentradingsolutions.log4fix.core.MockMemoryLogModel;
-import org.opentradingsolutions.log4fix.util.FIXMessageTestHelper;
-
-import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.swing.JCheckBox;
+import javax.swing.SwingUtilities;
+
+import org.opentradingsolutions.log4fix.core.AbstractSessionTestCase;
+import org.opentradingsolutions.log4fix.core.LogMessage;
+import org.opentradingsolutions.log4fix.core.MockMemoryLogModel;
+import org.opentradingsolutions.log4fix.util.FIXMessageTestHelper;
 
 /**
  * @author Brian M. Coyner
@@ -75,9 +72,12 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testNoSortMaintainsOriginalOrder() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
 
         for (LogMessage message : messages) {
             memoryLogModel.addLogMessage(message);
@@ -90,9 +90,12 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testReverseTheMessageOrder() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
 
         for (LogMessage message : messages) {
             memoryLogModel.addLogMessage(message);
@@ -114,9 +117,12 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testFlipBeforeAdding() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
 
         // flip the messages on the view before adding messages
         checkBox.doClick();
@@ -138,9 +144,12 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
     public void testFlipFlop() {
 
         List<LogMessage> messages = new ArrayList<LogMessage>();
-        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(0, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(1, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(2, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
 
         int index;
         for (index = 0; index < messages.size(); index++) {
@@ -151,8 +160,10 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
         checkBox.doClick();
         waitForSwing();
 
-        messages.add(new LogMessage(3, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
-        messages.add(new LogMessage(4, true, getSessionId(), testHelper.createValidMessage().toString(), getDictionary()));
+        messages.add(new LogMessage(3, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
+        messages.add(new LogMessage(4, true, getSessionId(), testHelper.createValidMessage().toString(),
+                getDictionary()));
 
         for (index = index; index < messages.size(); index++) {
             memoryLogModel.addLogMessage(messages.get(index));
@@ -164,7 +175,6 @@ public class ViewModelSortTest extends AbstractSessionTestCase {
         // the messages should be reversed
         Collections.reverse(messages);
         assertEquals(messages, model.getSortedList());
-
 
         // here's the flop
         checkBox.doClick();

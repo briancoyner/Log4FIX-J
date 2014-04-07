@@ -1,27 +1,22 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
- *
+ * Copyright (c) 2006 - 2011 Brian M. Coyner All rights reserved.
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
+ * notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
+ * notice, this list of conditions and the following disclaimer in
+ * the documentation and/or other materials provided with the
+ * distribution.
  * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
- *    nor the names of its contributors may be used to endorse or promote
- *    products derived from this software without specific prior written permission.
- *
+ * nor the names of its contributors may be used to endorse or promote
+ * products derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
+ * DISCLAIMED. IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -40,6 +35,28 @@ import ca.odell.glazedlists.FilterList;
 import ca.odell.glazedlists.matchers.CompositeMatcherEditor;
 import ca.odell.glazedlists.matchers.MatcherEditor;
 import ca.odell.glazedlists.swing.TextComponentMatcherEditor;
+import quickfix.SessionID;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Enumeration;
+import java.util.Iterator;
+
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumn;
+
 import org.jdesktop.swingx.JXTreeTable;
 import org.jdesktop.swingx.decorator.HighlighterPipeline;
 import org.jdesktop.swingx.treetable.TreeTableModel;
@@ -47,15 +64,6 @@ import org.opentradingsolutions.log4fix.core.GlazedListsMemoryLogModel;
 import org.opentradingsolutions.log4fix.core.LogMessage;
 import org.opentradingsolutions.log4fix.core.MemoryLogModel;
 import org.opentradingsolutions.log4fix.ui.fields.FieldHighlighter;
-import quickfix.SessionID;
-
-import javax.swing.*;
-import javax.swing.table.TableColumn;
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Enumeration;
-import java.util.Iterator;
 
 /**
  * @author Brian M. Coyner
@@ -99,7 +107,6 @@ public class ViewBuilder {
             }
         });
 
-
         return tabPane;
     }
 
@@ -134,7 +141,8 @@ public class ViewBuilder {
 
         EventList matchers = new BasicEventList();
 
-        TextComponentMatcherEditor<LogMessage> liveSearchMatcherEditor = new TextComponentMatcherEditor<LogMessage>(filterField, new MessageFilterator());
+        TextComponentMatcherEditor<LogMessage> liveSearchMatcherEditor =
+                new TextComponentMatcherEditor<LogMessage>(filterField, new MessageFilterator());
         matchers.add(liveSearchMatcherEditor);
         MatcherEditor matcherEditor = new CompositeMatcherEditor(matchers);
         messages.setMatcherEditor(matcherEditor);
@@ -202,7 +210,6 @@ public class ViewBuilder {
         table.setOpenIcon(null);
         table.setLeafIcon(null);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
 
         HighlighterPipeline pipeline = new HighlighterPipeline();
         pipeline.addHighlighter(new FieldHighlighter());
