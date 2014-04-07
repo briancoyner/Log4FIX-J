@@ -1,27 +1,22 @@
 /*
  * The Log4FIX Software License
- * Copyright (c) 2006 - 2011 Brian M. Coyner  All rights reserved.
- *
+ * Copyright (c) 2006 - 2011 Brian M. Coyner All rights reserved.
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *
+ * notice, this list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the
- *    distribution.
- *
+ * notice, this list of conditions and the following disclaimer in
+ * the documentation and/or other materials provided with the
+ * distribution.
  * 3. Neither the name of the product (Log4FIX), nor Brian M. Coyner,
- *    nor the names of its contributors may be used to endorse or promote
- *    products derived from this software without specific prior written permission.
- *
+ * nor the names of its contributors may be used to endorse or promote
+ * products derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED.  IN NO EVENT SHALL BRIAN M. COYNER OR
+ * DISCLAIMED. IN NO EVENT SHALL BRIAN M. COYNER OR
  * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
@@ -36,15 +31,24 @@ package org.opentradingsolutions.log4fix.importer;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import org.opentradingsolutions.log4fix.core.*;
+import quickfix.SessionID;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.List;
+
+import org.opentradingsolutions.log4fix.core.AbstractSessionTestCase;
+import org.opentradingsolutions.log4fix.core.LogField;
+import org.opentradingsolutions.log4fix.core.LogMessage;
+import org.opentradingsolutions.log4fix.core.MemoryLogModel;
+import org.opentradingsolutions.log4fix.core.MockMemoryLogModel;
 import org.opentradingsolutions.log4fix.datadictionary.ClassPathDataDictionaryLoader;
 import org.opentradingsolutions.log4fix.datadictionary.DataDictionaryLoader;
 import org.opentradingsolutions.log4fix.util.FIXMessageHelper;
-import quickfix.SessionID;
-
-import java.io.*;
-import java.net.URL;
-import java.util.List;
 
 /**
  * @author Brian M. Coyner
@@ -84,7 +88,6 @@ public class ImporterFileTest extends AbstractSessionTestCase {
 
     public void testLogFile() throws Exception {
         InputStream is = getLogFileInputStream(logFileName);
-
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String line;
@@ -195,7 +198,6 @@ public class ImporterFileTest extends AbstractSessionTestCase {
             suite.addTest(new ImporterFileTest(logFileName));
         }
 
-
         return suite;
     }
 
@@ -230,7 +232,8 @@ public class ImporterFileTest extends AbstractSessionTestCase {
         assertEquals(isValid, logMessage.isValid());
 
         if (!isValid) {
-            assertNull("A valid message should not have any validation error messages.", logMessage.getValidationErrorMessages());
+            assertNull("A valid message should not have any validation error messages.",
+                    logMessage.getValidationErrorMessages());
         }
     }
 
