@@ -168,7 +168,7 @@ public class LogMessage implements Comparable {
 
             Field field = allFields.remove(tag);
             if (field != null) {
-                logFields.add(createLogField(message, field));
+                logFields.add(createLogField(message, message, field));
             }
         }
 
@@ -186,42 +186,37 @@ public class LogMessage implements Comparable {
         return "" + messageIndex;
     }
 
-    private LogField createLogField(Message message, Field field) {
+    private LogField createLogField(Message message,FieldMap parent, Field field) {
 
-        MsgType messageType = getMessageType(message);
-        String messageTypeValue = messageType.getValue();
+    	MsgType messageType = getMessageType(message);
+    	String messageTypeValue = messageType.getValue();
 
-        LogField logField = LogField.createLogField(messageType, field, dictionary);
+    	LogField logField = LogField.createLogField(messageType, field, dictionary);
 
-        final DataDictionary.GroupInfo groupInfo = dictionary.getGroup(messageTypeValue, field.getTag());
-        if (groupInfo != null) {
+    	if (parent.hasGroup(field.getTag())) {
 
-            int delimeterField = groupInfo.getDelimeterField();
-            Group group = new Group(field.getTag(), delimeterField);
-            int numberOfGroups = Integer.valueOf((String) field.getObject());
+    		List<Group> groups = parent.getGroups(field.getTag());
+    		for (Group group:groups) {
+    			LogGroup logGroup = new LogGroup(messageType, field, dictionary);
 
-            for (int index = 0; index < numberOfGroups; index++) {
-                LogGroup logGroup = new LogGroup(messageType, field, dictionary);
+    			Iterator groupIterator = group.iterator();
+    			while (groupIterator.hasNext()) {
+    				Field groupField = (Field) groupIterator.next();
+    				if(group.hasGroup(groupField.getTag())) {
+    					logGroup.addField(createLogField(message, group, groupField));
+    				}
+    				else {
+    					logGroup.addField(LogField.createLogField(messageType,
+    							groupField, dictionary));
+    				}
 
-                try {
+    			}
 
-                    message.getGroup(index + 1, group);
+    			logField.addGroup(logGroup);
+    		}
+    	}
 
-                    Iterator groupIterator = group.iterator();
-                    while (groupIterator.hasNext()) {
-                        Field groupField = (Field) groupIterator.next();
-                        logGroup.addField(LogField.createLogField(messageType, groupField, dictionary));
-
-                    }
-                } catch (FieldNotFound fieldNotFound) {
-                    addValidationError(new ValidationError(fieldNotFound.getMessage()));
-                }
-
-                logField.addGroup(logGroup);
-            }
-        }
-
-        return logField;
+    	return logField;
     }
 
     private Message createMessage() {
