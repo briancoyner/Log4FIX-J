@@ -20,5 +20,3 @@ After the Log4FIX UI launches press the "Import" button, select a FIX log file t
 ## Sample Messages
 
 There are a handful of sample messages located in the __src/test/resources/logs__ directory.
-
-## Changes 19Sept2017
