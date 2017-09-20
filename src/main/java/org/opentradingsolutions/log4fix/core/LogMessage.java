@@ -36,6 +36,7 @@ package org.opentradingsolutions.log4fix.core;
 
 import org.opentradingsolutions.log4fix.util.FIXMessageHelper;
 import quickfix.*;
+import quickfix.DataDictionary.GroupInfo;
 import quickfix.field.MsgType;
 import quickfix.field.SendingTime;
 
@@ -193,7 +194,13 @@ public class LogMessage implements Comparable {
 
         LogField logField = LogField.createLogField(messageType, field, dictionary);
 
-        final DataDictionary.GroupInfo groupInfo = dictionary.getGroup(messageTypeValue, field.getTag());
+        addGroup(message, field, messageType, messageTypeValue, logField, dictionary);
+        return logField;
+    }
+
+    private void addGroup(FieldMap messageOrGroup, Field field, MsgType messageType, String messageTypeValue, LogField logField, DataDictionary parentDictionary) {
+        
+        final DataDictionary.GroupInfo groupInfo = parentDictionary.getGroup(messageTypeValue, field.getTag());
         if (groupInfo != null) {
 
             int delimeterField = groupInfo.getDelimeterField();
@@ -204,13 +211,16 @@ public class LogMessage implements Comparable {
                 LogGroup logGroup = new LogGroup(messageType, field, dictionary);
 
                 try {
-
-                    message.getGroup(index + 1, group);
+                    messageOrGroup.getGroup(index + 1, group);
 
                     Iterator groupIterator = group.iterator();
                     while (groupIterator.hasNext()) {
                         Field groupField = (Field) groupIterator.next();
-                        logGroup.addField(LogField.createLogField(messageType, groupField, dictionary));
+                        LogField fieldForLogGroup = LogField.createLogField(messageType, groupField, dictionary);
+                        //check if this is, itself a group
+                        addGroup(group, groupField, messageType, messageTypeValue, fieldForLogGroup, groupInfo.getDataDictionary() );
+                        
+                        logGroup.addField(fieldForLogGroup);
 
                     }
                 } catch (FieldNotFound fieldNotFound) {
@@ -220,8 +230,6 @@ public class LogMessage implements Comparable {
                 logField.addGroup(logGroup);
             }
         }
-
-        return logField;
     }
 
     private Message createMessage() {
