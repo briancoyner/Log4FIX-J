@@ -44,7 +44,9 @@ import quickfix.SessionID;
 
 import java.io.*;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Brian M. Coyner
@@ -153,15 +155,50 @@ public class ImporterFileTest extends AbstractSessionTestCase {
         String[] rawFields = rawMessage.split("\\" + LogMessage.DEFAULT_DELIMETER);
 
         List<LogField> list = logMessage.getLogFields();
-        assertEquals("Field Count.", rawFields.length, list.size());
+        assertEquals("Field Count.", rawFields.length, deepCountFields(list));
 
+        Set<String> flattenFields = flattenFields(list);
         for (int index = 0; index < rawFields.length; index++) {
             String rawField = rawFields[index];
-
-            int tag = Integer.parseInt(rawField.substring(0, rawField.indexOf("=")));
-            LogField logField = list.get(index);
-            assertEquals("Field.", tag, logField.getField().getTag());
+            assertTrue("Field.", flattenFields.contains(rawField));
         }
+    }
+
+    
+    //Collapse the possibly nested subgroups into a Set for tests
+    private Set<String> flattenFields(List<LogField> list) {
+        HashSet<String> flatFields = new HashSet<>();
+        
+        for (LogField logField : list) {
+            flatFields.add("" + logField.getTag() + "=" + logField.getValue());
+            List<LogGroup> groups = logField.getGroups();
+            if (groups==null)   continue;
+            for (LogGroup logGroup : groups) {
+                List<LogField> fields = logGroup.getFields();
+                if (fields==null) continue;
+                flatFields.addAll(flattenFields(fields));
+            }
+        }
+        
+        return flatFields;
+    }
+    
+    //Count ALL the fields, including those in subgroups
+    private int deepCountFields(List<LogField> list) {
+        int count = 0;
+        
+        for (LogField logField : list) {
+            count++;
+            List<LogGroup> groups = logField.getGroups();
+            if (groups==null)   continue;
+            for (LogGroup logGroup : groups) {
+                List<LogField> fields = logGroup.getFields();
+                if (fields==null) continue;
+                count = count + deepCountFields(fields);
+            }
+        }
+        
+        return count;
     }
 
     private InputStream getLogFileInputStream(String logFileName) {
