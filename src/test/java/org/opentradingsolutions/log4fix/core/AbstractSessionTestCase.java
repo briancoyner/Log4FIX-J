@@ -57,6 +57,8 @@ public abstract class AbstractSessionTestCase extends TestCase {
 
     @Override
     public final void setUp() throws Exception {
+        super.setUp();
+
         sessionId = new SessionID("FIX.4.2", "sender", "target");
         InputStream ddis = getClass().getResourceAsStream("/FIX42.xml");
         assertNotNull("Cannot find FIX42.xml file on the classpath.", ddis);
@@ -72,7 +74,7 @@ public abstract class AbstractSessionTestCase extends TestCase {
         return sessionId;
     }
 
-    public final DataDictionary getDictionary() {
+    protected final DataDictionary getDictionary() {
         return dictionary;
     }
 }

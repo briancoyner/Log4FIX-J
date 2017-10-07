@@ -47,6 +47,8 @@ public class GlazedListsMemoryLogModelTest extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
+        super.setUp();
+
         sessionId = new SessionID("FIX.4.2", "sender", "target");
         model = new GlazedListsMemoryLogModel(sessionId);
     }

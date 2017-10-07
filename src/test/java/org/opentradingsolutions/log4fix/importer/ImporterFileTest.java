@@ -53,22 +53,22 @@ import java.util.Set;
  */
 public class ImporterFileTest extends AbstractSessionTestCase {
 
-    public static final String EXPECTED_MESSAGE_COUNT = "ExpectedMessageCount";
+    private static final String EXPECTED_MESSAGE_COUNT = "ExpectedMessageCount";
 
     /**
      * Are the messages "Incoming", "Outgoing" or "Both" *
      */
-    public static final String EXPECTED_DIRECTION = "Direction";
-    public static final String EXPECTED_BEGIN_STRING = "ExpectedBeginString";
-    public static final String EXPECTED_SENDER_COMP_ID = "ExpectedSenderCompId";
-    public static final String EXPECTED_TARGET_COMP_ID = "ExpectedTargetCompId";
-    public static final String IS_VALID = "IsValid";
-    public static final String HAS_REPEATING_GROUPS = "HasRepeatingGroups";
+    private static final String EXPECTED_DIRECTION = "Direction";
+    private static final String EXPECTED_BEGIN_STRING = "ExpectedBeginString";
+    private static final String EXPECTED_SENDER_COMP_ID = "ExpectedSenderCompId";
+    private static final String EXPECTED_TARGET_COMP_ID = "ExpectedTargetCompId";
+    private static final String IS_VALID = "IsValid";
+    private static final String HAS_REPEATING_GROUPS = "HasRepeatingGroups";
 
     // direction values.
-    public static final String EXPECTED_DIRECTION_INCOMING_VALUE = "Incoming";
-    public static final String EXPECTED_DIRECTION_OUTGOING_VALUE = "Outgoing";
-    public static final String EXPECTED_DIRECTION_BOTH_VALUE = "Both";
+    private static final String EXPECTED_DIRECTION_INCOMING_VALUE = "Incoming";
+    private static final String EXPECTED_DIRECTION_OUTGOING_VALUE = "Outgoing";
+    private static final String EXPECTED_DIRECTION_BOTH_VALUE = "Both";
 
     private String expectedDirection;
     private String expectedBeginString;
@@ -79,7 +79,7 @@ public class ImporterFileTest extends AbstractSessionTestCase {
     private int expectedMessageCount;
     private boolean expectedHasRepeatingGroups;
 
-    public ImporterFileTest(String logFileName) {
+    private ImporterFileTest(String logFileName) {
         super("testLogFile");
         this.logFileName = logFileName;
     }
@@ -158,46 +158,45 @@ public class ImporterFileTest extends AbstractSessionTestCase {
         assertEquals("Field Count.", rawFields.length, deepCountFields(list));
 
         Set<String> flattenFields = flattenFields(list);
-        for (int index = 0; index < rawFields.length; index++) {
-            String rawField = rawFields[index];
+        for (String rawField : rawFields) {
             assertTrue("Field.", flattenFields.contains(rawField));
         }
     }
 
-    
+
     //Collapse the possibly nested subgroups into a Set for tests
     private Set<String> flattenFields(List<LogField> list) {
         HashSet<String> flatFields = new HashSet<>();
-        
+
         for (LogField logField : list) {
             flatFields.add("" + logField.getTag() + "=" + logField.getValue());
             List<LogGroup> groups = logField.getGroups();
-            if (groups==null)   continue;
+            if (groups == null) continue;
             for (LogGroup logGroup : groups) {
                 List<LogField> fields = logGroup.getFields();
-                if (fields==null) continue;
+                if (fields == null) continue;
                 flatFields.addAll(flattenFields(fields));
             }
         }
-        
+
         return flatFields;
     }
-    
+
     //Count ALL the fields, including those in subgroups
     private int deepCountFields(List<LogField> list) {
         int count = 0;
-        
+
         for (LogField logField : list) {
             count++;
             List<LogGroup> groups = logField.getGroups();
-            if (groups==null)   continue;
+            if (groups == null) continue;
             for (LogGroup logGroup : groups) {
                 List<LogField> fields = logGroup.getFields();
-                if (fields==null) continue;
+                if (fields == null) continue;
                 count = count + deepCountFields(fields);
             }
         }
-        
+
         return count;
     }
 
@@ -222,16 +221,13 @@ public class ImporterFileTest extends AbstractSessionTestCase {
         URL url = suite.getClass().getResource("/logs");
         File pathDirectory = new File(url.getFile());
         assertTrue(pathDirectory.isDirectory());
-        String[] logFiles = pathDirectory.list(new FilenameFilter() {
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".log");
+        String[] logFiles = pathDirectory.list((dir, name) -> name.endsWith(".log"));
+
+        if (logFiles != null) {
+            for (String logFileName : logFiles) {
+                suite.addTest(new ImporterFileTest(logFileName));
             }
-        });
-
-        for (String logFileName : logFiles) {
-            suite.addTest(new ImporterFileTest(logFileName));
         }
-
 
         return suite;
     }

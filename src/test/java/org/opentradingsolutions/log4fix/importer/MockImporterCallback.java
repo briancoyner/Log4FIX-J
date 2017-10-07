@@ -55,15 +55,15 @@ public class MockImporterCallback implements ImporterCallback {
         ++doneInvokedCounter;
     }
 
-    public int getStartingInvokedCounter() {
+    int getStartingInvokedCounter() {
         return startingInvokedCounter;
     }
 
-    public int getCancelingInvokedCounter() {
+    int getCancelingInvokedCounter() {
         return cancelingInvokedCounter;
     }
 
-    public int getDoneInvokedCounter() {
+    int getDoneInvokedCounter() {
         return doneInvokedCounter;
     }
 }

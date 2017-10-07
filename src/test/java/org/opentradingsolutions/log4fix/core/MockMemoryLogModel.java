@@ -54,7 +54,7 @@ public class MockMemoryLogModel implements MemoryLogModel {
         this(null);
     }
 
-    public MockMemoryLogModel(SessionID sessionId) {
+    MockMemoryLogModel(SessionID sessionId) {
         this.sessionId = sessionId;
         actualLogMessages = new ThreadSafeList<LogMessage>(new BasicEventList<LogMessage>());
         actualLogEvents = new BasicEventList<LogEvent>();

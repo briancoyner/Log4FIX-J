@@ -45,12 +45,11 @@ public class MockMemoryLog extends AbstractMemoryLog {
     private final SessionID sessionID;
     private final MemoryLogModel memoryLogModel;
 
-    public MockMemoryLog(MemoryLogModel memoryLogModel, SessionID sessionID) {
+    MockMemoryLog(MemoryLogModel memoryLogModel, SessionID sessionID) {
         super(new ClassPathDataDictionaryLoader());
         this.sessionID = sessionID;
         this.memoryLogModel = memoryLogModel;
     }
-
 
     @Override
     protected SessionID getSessionId() {

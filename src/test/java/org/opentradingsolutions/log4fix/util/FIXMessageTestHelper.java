@@ -62,7 +62,7 @@ public class FIXMessageTestHelper {
         return createMessage(sendingTime, true);
     }
 
-    public Message createMessage(Date sendingTime, boolean isValid) {
+    private Message createMessage(Date sendingTime, boolean isValid) {
         Message message = new NewOrderSingle(new ClOrdID("12345"),
                 new HandlInst(HandlInst.AUTOMATED_EXECUTION_ORDER_PRIVATE),
                 new Symbol("COYNER"), new Side(Side.BUY),
@@ -72,7 +72,7 @@ public class FIXMessageTestHelper {
         return message;
     }
 
-    public void setHeaderFields(Message message, Date sendingTime, boolean isValid) {
+    private void setHeaderFields(Message message, Date sendingTime, boolean isValid) {
         message.getHeader().setString(SenderCompID.FIELD, sessionId.getSenderCompID());
         message.getHeader().setString(TargetCompID.FIELD, sessionId.getTargetCompID());
         message.getHeader().setInt(MsgSeqNum.FIELD, messageSequenceNumber++);
@@ -90,7 +90,7 @@ public class FIXMessageTestHelper {
         return removeField(tag, rawMessage, (char) 0x01);
     }
 
-    public String removeField(int tag, String rawMessage, char delimeter) {
+    private String removeField(int tag, String rawMessage, char delimeter) {
         int messageTypeIndex = rawMessage.indexOf(String.valueOf(tag));
         String msg = rawMessage.substring(0, messageTypeIndex);
         int nextFieldIndex = rawMessage.indexOf(delimeter, messageTypeIndex);

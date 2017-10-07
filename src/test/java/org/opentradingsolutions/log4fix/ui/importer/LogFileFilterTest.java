@@ -47,6 +47,8 @@ public class LogFileFilterTest extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
+        super.setUp();
+
         filter = new LogFileFilter();
     }
 

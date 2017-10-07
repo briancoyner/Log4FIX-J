@@ -61,7 +61,6 @@ public class LogMessageGetFieldsTest extends AbstractSessionTestCase {
         testHelper = new FIXMessageTestHelper(getSessionId());
     }
 
-    
     public void testInvalidMessage() {
         Message message = createValidMessage(sendingTime);
 

@@ -51,6 +51,8 @@ public class ClassPathDataDictionaryLoaderTest extends TestCase {
     private DataDictionaryLoader loader;
 
     protected void setUp() throws Exception {
+        super.setUp();
+
         loader = new ClassPathDataDictionaryLoader();
     }
 

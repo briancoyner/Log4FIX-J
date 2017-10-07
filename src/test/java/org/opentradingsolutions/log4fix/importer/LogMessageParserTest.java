@@ -61,6 +61,8 @@ public class LogMessageParserTest extends TestCase {
 
     @Override
     public void setUp() throws Exception {
+        super.setUp();
+
         out = new PipedOutputStream();
         in = new PipedInputStream(out);
 

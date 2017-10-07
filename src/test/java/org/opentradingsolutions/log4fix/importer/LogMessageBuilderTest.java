@@ -53,9 +53,11 @@ public class LogMessageBuilderTest extends TestCase {
     private BlockingQueue<String> queue;
     private Thread thread;
     private ImporterModel model;
-    
+
     @Override
-    protected void setUp() {
+    protected void setUp() throws Exception {
+        super.setUp();
+
         model = createModel();
 
         queue = new LinkedBlockingQueue<String>(1);
@@ -66,6 +68,8 @@ public class LogMessageBuilderTest extends TestCase {
     @Override
     protected void tearDown() throws Exception {
         assertFalse("The builder thread is still running.", thread.isAlive());
+
+        super.tearDown();
     }
 
     public void testPoisonPillTerminatesThread() throws Exception {

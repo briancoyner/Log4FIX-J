@@ -59,6 +59,7 @@ public class ImporterTest extends TestCase {
     private MemoryLogModel logModel;
 
     protected void setUp() throws Exception {
+        super.setUp();
 
         callback = new MockImporterCallback();
         outputStream = new PipedOutputStream();
@@ -101,7 +102,8 @@ public class ImporterTest extends TestCase {
         assertCallback(1, 1, 1);
     }
 
-    private void assertCallback(int startingInvokedCounter, int doneInvokedCounter,
+    private void assertCallback(int startingInvokedCounter,
+                                int doneInvokedCounter,
                                 int canceledInvokedCounter) {
         assertEquals("Starting Callback Invoked Count.", startingInvokedCounter, callback.getStartingInvokedCounter());
         assertEquals("Done Callback Invoked Count.", doneInvokedCounter, callback.getDoneInvokedCounter());
