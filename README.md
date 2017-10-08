@@ -2,7 +2,7 @@
 
 ## Build Instructions
 
-Requires: Java 6, Ant 1.8+
+Requires: Java 8
 
 All thirdparty JARs and licenses are included
 
